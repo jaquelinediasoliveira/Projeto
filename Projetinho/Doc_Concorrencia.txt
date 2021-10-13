@@ -1,0 +1,30 @@
+LOCALIZA
+
+Pontos Positivos:
+
+- A área de cadastro é bem completa
+- Responsivo
+
+Pontos Negativos:
+
+- Pesado visualmente (feio)
+- Tamplate pouco aproveitado
+- Não mostra os preços dos veículos no card
+- Só pede os documentos do usuario depois de todo o processo, o que faz o mesmo perder muito tempo caso
+ ocorra algum problema com os dados que não permita a conclusão da locação
+
+UNIDAS
+
+Pontos Positivos:
+
+- Design limpo
+- Bem informativo
+- Mostra o valor dos veículos nos cards
+- Responsivo
+
+
+Pontos Negativos:
+
+- A confirmação por sms do cadastro demora
+- Só pede os documentos do usuário depois de todo o processo, o que faz o mesmo perder muito tempo caso
+ ocorra algum problema com os dados que não permita a conclusão da locação
