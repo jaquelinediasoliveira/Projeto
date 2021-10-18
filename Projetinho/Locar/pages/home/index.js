@@ -7,10 +7,10 @@ import css from "./style"
  export default function Home({navigator}){
      return(
          <View style={css.view}>
-             <Text>Home</Text>
-             <Text>Reserva</Text>
-             <Text>Help</Text>
-             <Text>User</Text>
+             <Text style={css.text}>Home</Text>
+             <Text style={css.text}>Reserva</Text>
+             <Text style={css.text}>Help</Text>
+             <Text style={css.text}>User</Text>
          </View>
      )
  }

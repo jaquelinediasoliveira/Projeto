@@ -1,0 +1,7 @@
+git clone url_projeto
+
+git add .
+git commit -m "Atualizacao"
+git push
+
+git pull
