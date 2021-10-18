@@ -85,9 +85,10 @@ header {
     background-color: #5c40ff;
 }
 
-.carrosel {
+.carousel {
     height: 300px;
     padding: 30px;
+    margin-bottom: 20px;
 
     display: block;
     background-image: url("../img/img.jpg");
@@ -99,14 +100,17 @@ header {
 form {
     display: flex;
     justify-content: center;
-    align-items: baseline;
+    align-items:flex-end;
 }
 
-/*.carrosel {
-    height: 300px;
-    background-image: url("../img.jpg");
-    display: flex;
-}*/
+form p {
+    color: #fff;
+    font-size: 12px;
+}
+
+form > div {
+    margin: 2px;
+}
 
 .input {
     width: 100%;
@@ -131,7 +135,7 @@ form {
 }
 
 .filtro {
-    min-width: 200px;
+    min-width: 250px;
     max-width: 400px;
 }
 
@@ -171,54 +175,13 @@ button:hover {
     }
 }
 
-/*
-.filtro {
-    margin: auto;
-    padding: 0 20px;
-    width: 85%;
-    height: 100px;
-    background-color: #fff;
-    border-radius: 10px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
-}
-
-.filtro > div {
-    margin: 10px;
-}
-
-.filtro > div > input { 
-    width: 300px;
-    min-width: 80%;
-}
-
-.filtro > div > p {
-    font-size: 12px;
-    font-weight: 500;
-    margin-bottom: 5px;
-    color: #5c40ff;
-}
-
-#filtro {
-    width: 96%;
-    height: 30px;
-    border: 1px solid #5c40ff;
-    border-radius: 5px;
-    padding: 0 5px;
-}
-
-.data {
-    display: flex;
-}*/
-
 i {
     margin-right: 10px;
 }
 
 h1 {
     color: #333;
+    font-size: 24px;
     text-align: center;
     margin-top: 20px;
 }
@@ -243,13 +206,18 @@ img {
 }
 
 .card {
-    width: 200px;
+    width: 220px;
     height: 300px;
 
-    margin: 5px;
+    margin: 10px;
     padding: 30px 10px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
     background-color: #fff;
+    border: 6px solid #ddd;
     border-radius: 6px;
+    /* box-shadow: 5px 5px #ddd; */
 }
 
 .card img {
@@ -258,7 +226,10 @@ img {
 }
 
 .diaria {
-    font-size: 20px;
+    font-size: 22px;
+    color: #5c40ff;
+    font-weight: 900;
+    display: flex;
 }
 
 footer {
