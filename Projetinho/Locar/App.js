@@ -10,7 +10,11 @@ import Perfil from './pages/perfil';
 export default function App(){
   return(
     <NavigationContainer>
-      <Stack.Navigator>
+      <Stack.Navigator
+        screenOptions={{
+          headerShown: false
+        }}
+      >
         <Stack.Screen name="Home" component={Home}/>
         <Stack.Screen name="Perfil" component={Perfil} />
       </Stack.Navigator>

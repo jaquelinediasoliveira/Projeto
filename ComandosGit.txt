@@ -1,7 +1,16 @@
+<<<<<<< HEAD
 git clone url_projeto
 
 git add .
 git commit -m "Atualizacao"
 git push
 
+=======
+git clone url_projeto
+
+git add .
+git commit -m "Atualizacao"
+git push
+
+>>>>>>> 395110ca9d199a92c5e5cb20173924d7e0634713
 git pull
