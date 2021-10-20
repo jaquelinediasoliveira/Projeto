@@ -4,7 +4,7 @@ export default StyleSheet.create({
     tela:{
         flex: 1,
         alignItems: 'center',
-        justifyContent: 'space-between'
+        backgroundColor: 'white'
     },
     logo:{
         width: '45.5%',
@@ -23,7 +23,7 @@ export default StyleSheet.create({
         alignItems: 'center'
     },
     text:{
-       fontSize: '120%',
+       fontSize: 18, 
        marginTop: '8%'
     },
     localizacao:{
@@ -47,6 +47,13 @@ export default StyleSheet.create({
     footer:{
         width: '100%',
         height: '8%',
-        backgroundColor: 'red',
+        display: 'flex',
+        flexDirection: 'row',
+        justifyContent: 'space-around',
+        alignItems: 'center'
+    },
+    icon:{
+        width: '10%',
+        height: '60%'
     }
 })
