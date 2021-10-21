@@ -7,8 +7,8 @@ export default StyleSheet.create({
         backgroundColor: 'white'
     },
     logo:{
-        width: '45.5%',
-        height: '52%'
+        width: '50%',
+        height: '62%'
     },
     header:{
         width: "100%",
@@ -27,8 +27,8 @@ export default StyleSheet.create({
        marginTop: '8%'
     },
     localizacao:{
-        width: '60%',
-        height: '6.5%',
+        width: '65%',
+        height: '10%',
         borderWidth: 1,
         borderColor: '#9932CC',
         borderRadius: 15,
@@ -37,7 +37,7 @@ export default StyleSheet.create({
         marginTop: "5%"
     },
     local:{
-        width: '11%',
+        width: '13%',
         height: '51%'
     },
     input:{
