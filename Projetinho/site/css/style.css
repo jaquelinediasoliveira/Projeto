@@ -302,14 +302,39 @@ img {
 
 @media (max-width: 1000px) {
     .app > div > p {
-        /* opacity: 0%; */
         margin-left: 60px;
     }
 }
 
 @media (max-width: 820px) {
-    .app > div > p {
+    .app {
+        height: 320px;
+    }
+    .app > div > p {        
+    font-size: 30px;
+        /* opacity: 0%; */
+    }
+    .relative > img {
+        width: 300px;    
+        position: absolute;
+        bottom: 0px;
+    }
+}
+
+@media (max-width: 550px) {
+    .app {
+        height: 320px;
+        flex-wrap: wrap;
+}
+    .app > div > p { 
         opacity: 0%;
+        font-size: 10px;
+        margin-left: 0px;
+    }
+    .relative > img {
+        width: 300px;    
+        position: absolute;
+        bottom: 0px;
     }
 }
 
@@ -333,12 +358,3 @@ footer > p {
     font-weight: 900;
     text-transform: uppercase;
 }
-
-/* .items {
-    display: flex;
-}
-
-#items-wrapper > div > img {
-    width: 100%;
-    height: 100%;
-} */
