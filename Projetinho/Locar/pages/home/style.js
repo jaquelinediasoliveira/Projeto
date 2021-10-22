@@ -7,8 +7,9 @@ export default StyleSheet.create({
         backgroundColor: 'white'
     },
     logo:{
-        width: '50%',
-        height: '62%'
+        width: "100%",
+        height: "50%",
+        resizeMode: "contain",
     },
     header:{
         width: "100%",
