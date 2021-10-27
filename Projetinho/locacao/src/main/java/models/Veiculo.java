@@ -5,33 +5,42 @@ import org.json.JSONObject;
 
 public class Veiculo {
 
-	private int id_veiculo;
+	private String placa;
+	private int id_tipo;
 	private String marca;
 	private String modelo;
 	private String cor;
-	private String placa;
-	private String tipo_loc;
+	private float preco;
+	private boolean status_loc;
 	
 	public Veiculo() {
 		
 	}
 
 
-	public Veiculo(int id_veiculo, String marca, String modelo, String cor, String placa, String tipo_loc) {
-		this.id_veiculo = id_veiculo;
+	public Veiculo(String placa, int id_tipo, String marca, String modelo, String cor, float preco, boolean status_loc) {
+		this.placa = placa;
+		this.id_tipo = id_tipo;
 		this.marca = marca;
 		this.modelo = modelo;
 		this.cor = cor;
+		this.preco = preco;
+		this.status_loc = status_loc;
+	}
+	
+	
+	public String getPlaca() {
+		return placa;
+	}
+	public void setPlaca(String placa) {
 		this.placa = placa;
-		this.tipo_loc = tipo_loc;
 	}
 	
-	
-	public int getId_veiculo() {
-		return id_veiculo;
+	public int getId_tipo() {
+		return id_tipo;
 	}
-	public void setId_veiculo(int id_veiculo) {
-		this.id_veiculo = id_veiculo;
+	public void setId_veiculo(int id_tipo) {
+		this.id_tipo = id_tipo;
 	}
 	public String getMarca() {
 		return marca;
@@ -51,24 +60,27 @@ public class Veiculo {
 	public void setCor(String cor) {
 		this.cor = cor;
 	}
-	public String getPlaca() {
-		return placa;
+	
+	public float getPreco() {
+		return this.preco;	
 	}
-	public void setPlaca(String placa) {
-		this.placa = placa;
+	
+	public void setPreco(float preco) {
+		this.preco = preco;
 	}
-	public String getTipo_loc() {
-		return tipo_loc;
+	
+	public boolean getStatus_loc() {
+		return this.status_loc;
 	}
-	public void setTipo_loc(String tipo_loc) {
-		this.tipo_loc = tipo_loc;
+	
+	public void setStatus_loc(boolean status_loc) {
+		this.status_loc = status_loc;
 	}
 
 
 	@Override
 	public String toString() {
-		return id_veiculo + "	|	" + marca + "	|	" + modelo + "	|	" + cor
-				+ "	|	" + placa + "	|	" + tipo_loc;
+		return placa + "	|	" + id_tipo + "		|	 " + marca + "	|	" + modelo + "		|	" + cor + " 	|	" + preco + "	|	" + status_loc + "\r\t";
 	}
 	
 	
@@ -77,12 +89,13 @@ public class Veiculo {
 		JSONObject json = new JSONObject();
 		
 		try {
-			json.put("id_veiculo", id_veiculo);
+			json.put("placa", placa);
+			json.put("id_tipo", id_tipo);
 			json.put("marca", marca);
 			json.put("modelo", modelo);
 			json.put("cor", cor);
-			json.put("placa", placa);
-			json.put("tipo_loc", tipo_loc);
+			json.put("preco", preco);
+			json.put("status_loc", status_loc);
 			
 		} catch (JSONException e) {
 			System.out.println("Erro ao converter JSON: " + e);

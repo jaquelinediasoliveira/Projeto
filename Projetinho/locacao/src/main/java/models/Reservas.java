@@ -9,7 +9,8 @@ import org.json.JSONObject;
 
 public class Reservas {
 
-	private String cpf;
+	private int id_reserva;
+	private String cpf_passaporte;
 	private String veiculo;
 	private int id_loja;
 	private int id_tipo;
@@ -28,9 +29,9 @@ public class Reservas {
 	}
 
 
-	public Reservas(String cpf, String veiculo, int id_loja, int id_tipo, Date data_retirada, Date hora_retirada,
+	public Reservas(String cpf_passaporte, String veiculo, int id_loja, int id_tipo, Date data_retirada, Date hora_retirada,
 			Date data_devolucao, Date hora_devolucao) {
-		this.cpf = cpf;
+		this.cpf_passaporte = cpf_passaporte;
 		this.veiculo = veiculo;
 		this.id_loja = id_loja;
 		this.id_tipo = id_tipo;
@@ -41,11 +42,15 @@ public class Reservas {
 	}
 	
 	
-	public String getCpf() {
-		return cpf;
+	public int getId_reserva() {
+		return this.id_reserva;
 	}
-	public void setCpf(String cpf) {
-		this.cpf = cpf;
+	
+	public String getCpf_passaporte() {
+		return cpf_passaporte;
+	}
+	public void setCpf(String cpf_passaporte) {
+		this.cpf_passaporte = cpf_passaporte;
 	}
 	public String getVeiculo() {
 		return veiculo;
@@ -165,7 +170,7 @@ public class Reservas {
 	
 	@Override
 	public String toString() {
-		return cpf + "	|	" + veiculo + "	|	" + id_loja + "	|	" + id_tipo + "	|	" + d.format(data_retirada) + "	|	" + h.format(hora_retirada) + "	|	" + d.format(data_devolucao) + "	|	" + h.format(hora_devolucao) + "	|	";
+		return id_reserva + "	|	" + cpf_passaporte + "	|	" + veiculo + "	|	" + id_loja + "	|	" + id_tipo + "	|	" + d.format(data_retirada) + "	|	" + h.format(hora_retirada) + "	|	" + d.format(data_devolucao) + "	|	" + h.format(hora_devolucao) + "	|	";
 	}
 	
 	
@@ -174,7 +179,8 @@ public class Reservas {
 		
 		try {
 			
-			json.put("cpf", cpf);
+			json.put("id_reserva", id_reserva);
+			json.put("cpf_passsaporte", cpf_passaporte);
 			json.put("veiculo", veiculo);
 			json.put("id_loja", id_loja);
 			json.put("id_tipo", id_tipo);

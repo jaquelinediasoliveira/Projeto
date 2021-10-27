@@ -137,7 +137,7 @@ public class Cliente {
 			json.put("cep", cep);
 			json.put("email", email);
 			json.put("senha", senha);
-			json.put("dataNascimento", data_nascimento);
+			json.put("data_nascimento", data_nascimento);
 			json.put("telefone", telefone);
 			json.put("endereco", endereco);
 			

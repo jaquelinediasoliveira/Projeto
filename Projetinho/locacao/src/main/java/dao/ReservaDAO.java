@@ -16,7 +16,7 @@ public class ReservaDAO {
 	public void cadastrarReserva(Reservas reserva) {
 		
 		
-		String sql = "insert into reserva (cpf, veiculo, id_loja, id_tipo, data_retirada, hora_retirada, data_devolucao, hora_devolucao) values (?,?,?,?,?,?,?,?);";
+		String sql = "insert into reserva (cpf_passaporte, veiculo, id_loja, id_tipo, data_retirada, hora_retirada, data_devolucao, hora_devolucao) values (?,?,?,?,?,?,?,?);";
 		
 		
 		conn = new ConexaoBD().conectaBD();
@@ -25,7 +25,7 @@ public class ReservaDAO {
 			
 			ps = conn.prepareStatement(sql);
 			
-			ps.setString(1, reserva.getCpf());
+			ps.setString(1, reserva.getCpf_passaporte());
 			ps.setString(2, reserva.getVeiculo());
 			ps.setInt(3, reserva.getId_loja());
 			ps.setInt(4, reserva.getId_tipo());
