@@ -22,6 +22,7 @@ export default function Reservas({navigation}){
                     </View>
                     <TextInput placeholder="Logradouro" style={css.input}/>
                     <TextInput placeholder="Bairro" style={css.input}/>
+                    <TextInput placeholder="Senha" style={css.input}/>
                     <TouchableOpacity style={css.entrar}>
                         <Text style={css.botao}>Entrar</Text>
                     </TouchableOpacity>

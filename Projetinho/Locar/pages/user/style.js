@@ -37,7 +37,8 @@ export default StyleSheet.create({
         height: '15%',
         borderWidth: 1,
         borderColor: '#9932CC',
-        borderRadius: 5
+        borderRadius: 5,
+        padding: 10
     },
     entrar:{
         borderRadius: 15,
