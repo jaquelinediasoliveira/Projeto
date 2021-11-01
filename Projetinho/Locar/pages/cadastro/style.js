@@ -43,7 +43,6 @@ export default StyleSheet.create({
         borderWidth: 1,
         borderColor: '#9932CC',
         borderRadius: 5,
-        padding: 10,
     },
     entrar: {
         borderRadius: 15,
