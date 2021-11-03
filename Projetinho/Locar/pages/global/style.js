@@ -13,7 +13,7 @@ export default StyleSheet.create({
         backgroundColor: 'white',
         alignItems: 'center'
     },
-    titulo:{
+    header:{
         width: '90%',
         height: "10%",
         alignItems: 'center',
@@ -21,7 +21,13 @@ export default StyleSheet.create({
         borderBottomWidth: 1,
         borderBottomColor: 'black'
     },
-    text:{
+    title:{
         fontSize: 30
+    },
+    question: {
+        color: 'purple',
+        fontSize: 20,
+        marginBottom: 30,
+        marginTop: 30
     }
 })

@@ -10,12 +10,6 @@ export default StyleSheet.create({
         alignItems: 'center',
         alignSelf: 'center'
     },
-    perg:{
-        fontSize: 20,
-        marginBottom: 30,
-        marginTop: 30,
-        alignSelf: 'center'
-    },
     text:{
         fontSize: 16
     },

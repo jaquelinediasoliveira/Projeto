@@ -11,17 +11,17 @@ export default function Help({navigation}) {
     return (
         <View style={global.tela}>
 
-            <View style={global.titulo}>
-                <Text style={global.text}>Ajuda</Text>
+            <View style={global.header}>
+                <Text style={global.title}>Ajuda</Text>
             </View>
             
             <View style={global.body}>
                 <View style={css.view1}>
                     <MaterialIcons name="live-help" size={23} color="purple" />
-                    <Text style={css.perg}>O que você precisa?</Text>
+                    <Text style={global.question}> O que você precisa?</Text>
                 </View>
                 
-                <View style={css.view2}>
+                <View style={css.cards}>
                     <Text style={{fontWeight: "bold"}}>Central de atendimento</Text>
                     <View style={css.tel}>
                         <Feather name="phone" size={20} color="black" />
@@ -33,7 +33,7 @@ export default function Help({navigation}) {
                     </View>
                 </View>
 
-                <View style={css.view3}>
+                <View style={css.cards}>
                     <Text style={{fontWeight: "bold"}}>Central de reservas 24h</Text>
                     <View style={css.tel}>
                         <Feather name="phone" size={20} color="black" />
@@ -41,7 +41,7 @@ export default function Help({navigation}) {
                     </View>
                 </View>
 
-                <View style={css.view4}>
+                <View style={css.cards}>
                     <Text style={{fontWeight: "bold"}}>Assistência técnica 24h</Text>
                     <View style={css.tel}>
                         <Feather name="phone" size={20} color="black" />

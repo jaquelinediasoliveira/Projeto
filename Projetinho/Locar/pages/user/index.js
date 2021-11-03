@@ -13,12 +13,12 @@ export default function Perfil({navigation}) {
     return (
         <View style={global.tela}>
             
-            <View style={global.titulo}>
-                <Text style={global.text}>Usuário</Text>
+            <View style={global.header}>
+                <Text style={global.title}>Usuário</Text>
             </View>
 
             <View style={global.body}>
-                <Text style={css.perg}>Fazer login</Text>
+                <Text style={global.question}>Login</Text>
                 <View style={css.login}>
                     <Text style={css.text} >Insira seu documento</Text>
                     <TextInput placeholder="CPF/Passaporte" style={css.input}/>
@@ -27,7 +27,7 @@ export default function Perfil({navigation}) {
                         <Text style={css.text}>Entrar</Text>
                     </TouchableOpacity>
                 </View>
-                <Text style={css.perg}>Ainda não possui cadastro?</Text>
+                <Text style={global.question}>Ainda não possui cadastro?</Text>
                 <TouchableOpacity style={css.botao}>
                     <Text style={css.text} onPress={() => handleNavigate("Cadastro")}>Cadastrar</Text>
                 </TouchableOpacity>

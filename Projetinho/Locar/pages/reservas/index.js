@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, Image, ScrollView, Picker } from 'react-native'
+import { View, Text, Image, ScrollView } from 'react-native'
 import { Entypo } from '@expo/vector-icons';
 
 import Navbar from '../components/navbar'
@@ -62,9 +62,11 @@ export default function Reservas({ navigation }) {
 
     return (
         <View style={global.tela}>
-            <View style={global.titulo}>
-                <Text style={global.text}>Reservas</Text>
+
+            <View style={global.header}>
+                <Text style={global.title}>Reservas</Text>
             </View>
+            
             <View style={global.body}>
                 <View style={css.scroll}>
                     <ScrollView>

@@ -54,6 +54,5 @@ export default StyleSheet.create({
         alignSelf: 'center',
         marginTop: '70%',
         alignItems: 'center'
-       
     }
 })

@@ -25,7 +25,8 @@ export default StyleSheet.create({
     },
     text:{
        fontSize: 18, 
-       marginTop: '8%'
+       marginTop: '8%',
+       
     },
     localizacao:{
         width: '65%',
@@ -43,7 +44,8 @@ export default StyleSheet.create({
     },
     input:{
         width: '95%',
-        height: '100%'
+        height: '100%',
+        fontFamily: 'Roboto-Regular'
     },
     footer:{
         width: '100%',
