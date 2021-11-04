@@ -11,13 +11,13 @@ export default StyleSheet.create({
         alignSelf: 'center'
     },
     text:{
-        fontSize: 16
+        fontSize: 18
     },
     login:{
         borderRadius: 15,
         backgroundColor: '#FDFBFB',
         width: '70%',
-        height: "50%",
+        height: '50%',
         justifyContent: 'space-evenly',
         alignItems: 'center',
         shadowColor: "#000",
@@ -32,13 +32,13 @@ export default StyleSheet.create({
         borderWidth: 1,
         borderColor: '#9932CC',
         borderRadius: 5,
-        padding: 10
+        padding: '3%'
     },
     entrar:{
         borderRadius: 15,
         backgroundColor: '#F7EFFA',
         width: '40%',
-        height: "15%",
+        height: '15%',
         justifyContent: 'center',
         alignItems: 'center',
         alignSelf: 'center'

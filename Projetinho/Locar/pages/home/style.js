@@ -44,8 +44,7 @@ export default StyleSheet.create({
     },
     input:{
         width: '95%',
-        height: '100%',
-        fontFamily: 'Roboto-Regular'
+        height: '100%'
     },
     footer:{
         width: '100%',
@@ -58,5 +57,15 @@ export default StyleSheet.create({
     icon:{
         width: '10%',
         height: '60%'
+    },
+    data:{
+        width: '65%',
+        height: '10%',
+        borderWidth: 1,
+        borderColor: '#9932CC',
+        borderRadius: 15,
+        flexDirection: 'row',
+        alignItems: 'center',
+        marginTop: "5%"
     }
 })

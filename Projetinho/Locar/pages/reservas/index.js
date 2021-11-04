@@ -8,7 +8,6 @@ import css from './style';
 import global from '../global/style'
 
 export default function Reservas({ navigation }) {
-    const [selectedValue, setSelectedValue] = useState("rg");
     const url = "";
     const [listaReservas, setListaReserva] = useState([]);
 

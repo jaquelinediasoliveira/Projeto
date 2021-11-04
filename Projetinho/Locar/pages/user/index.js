@@ -21,7 +21,7 @@ export default function Perfil({navigation}) {
                 <Text style={global.question}>Login</Text>
                 <View style={css.login}>
                     <Text style={css.text} >Insira seu documento</Text>
-                    <TextInput placeholder="CPF/Passaporte" style={css.input}/>
+                    <TextInput placeholder="E-mail" style={css.input}/>
                     <TextInput secureTextEntry={true} placeholder="Senha" style={css.input}/>
                     <TouchableOpacity style={css.entrar}>
                         <Text style={css.text}>Entrar</Text>

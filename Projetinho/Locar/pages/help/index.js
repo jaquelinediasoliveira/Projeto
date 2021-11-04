@@ -22,7 +22,7 @@ export default function Help({navigation}) {
                 </View>
                 
                 <View style={css.cards}>
-                    <Text style={{fontWeight: "bold"}}>Central de atendimento</Text>
+                    <Text style={{fontWeight: "bold", fontSize: 16}}>Central de atendimento</Text>
                     <View style={css.tel}>
                         <Feather name="phone" size={20} color="black" />
                         <Text>  0800 123 4567</Text>
@@ -34,7 +34,7 @@ export default function Help({navigation}) {
                 </View>
 
                 <View style={css.cards}>
-                    <Text style={{fontWeight: "bold"}}>Central de reservas 24h</Text>
+                    <Text style={{fontWeight: "bold", fontSize: 16}}>Central de reservas 24h</Text>
                     <View style={css.tel}>
                         <Feather name="phone" size={20} color="black" />
                         <Text>  0800 90007654</Text>
@@ -42,7 +42,7 @@ export default function Help({navigation}) {
                 </View>
 
                 <View style={css.cards}>
-                    <Text style={{fontWeight: "bold"}}>Assistência técnica 24h</Text>
+                    <Text style={{fontWeight: "bold", fontSize: 16}}>Assistência técnica 24h</Text>
                     <View style={css.tel}>
                         <Feather name="phone" size={20} color="black" />
                         <Text>  0800 484 7231</Text>

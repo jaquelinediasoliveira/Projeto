@@ -26,7 +26,7 @@ export default StyleSheet.create({
     },
     question: {
         color: 'purple',
-        fontSize: 20,
+        fontSize: 23,
         marginBottom: 30,
         marginTop: 30
     }
