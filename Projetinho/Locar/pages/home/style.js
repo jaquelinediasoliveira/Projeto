@@ -4,7 +4,7 @@ export default StyleSheet.create({
     tela:{
         flex: 1,
         alignItems: 'center',
-        backgroundColor: 'white'
+        backgroundColor: 'white',
     },
     logo:{
         width: "100%",
@@ -26,7 +26,7 @@ export default StyleSheet.create({
     text:{
        fontSize: 18, 
        marginTop: '8%',
-       
+       fontFamily: "Roboto_300Light",
     },
     localizacao:{
         width: '65%',
@@ -37,10 +37,6 @@ export default StyleSheet.create({
         flexDirection: 'row',
         alignItems: 'center',
         marginTop: "5%"
-    },
-    local:{
-        width: '13%',
-        height: '51%'
     },
     input:{
         width: '95%',
@@ -66,6 +62,7 @@ export default StyleSheet.create({
         borderRadius: 15,
         flexDirection: 'row',
         alignItems: 'center',
-        marginTop: "5%"
-    }
+        marginTop: "5%",
+        padding: 10
+    },
 })

@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text} from 'react-native'
+import { View, Text, TouchableOpacity, Linking} from 'react-native'
 
 import Navbar from '../components/navbar'
 import { MaterialIcons, Feather, FontAwesome } from '@expo/vector-icons';
@@ -23,19 +23,19 @@ export default function Help({navigation}) {
                 
                 <View style={css.cards}>
                     <Text style={{fontWeight: "bold", fontSize: 16}}>Central de atendimento</Text>
-                    <View style={css.tel}>
+                    <TouchableOpacity style={css.tel} onPress={() => {Linking.openURL(`tel:0800 123 4567`)}}>
                         <Feather name="phone" size={20} color="black" />
                         <Text>  0800 123 4567</Text>
-                    </View>
-                    <View style={css.wpp}>
+                    </TouchableOpacity>
+                    <TouchableOpacity style={css.wpp}>
                         <FontAwesome name="whatsapp" size={24} color="black" />
                         <Text>  (11) 4002-8922</Text>
-                    </View>
+                    </TouchableOpacity>
                 </View>
 
                 <View style={css.cards}>
                     <Text style={{fontWeight: "bold", fontSize: 16}}>Central de reservas 24h</Text>
-                    <View style={css.tel}>
+                    <View style={css.tel} onPress={() => {Linking.openURL(`tel:0800 90007654`)}}>
                         <Feather name="phone" size={20} color="black" />
                         <Text>  0800 90007654</Text>
                     </View>
@@ -43,7 +43,7 @@ export default function Help({navigation}) {
 
                 <View style={css.cards}>
                     <Text style={{fontWeight: "bold", fontSize: 16}}>Assistência técnica 24h</Text>
-                    <View style={css.tel}>
+                    <View style={css.tel} onPress={() => {Linking.openURL(`tel:0800 484 7231`)}}>
                         <Feather name="phone" size={20} color="black" />
                         <Text>  0800 484 7231</Text>
                     </View>
