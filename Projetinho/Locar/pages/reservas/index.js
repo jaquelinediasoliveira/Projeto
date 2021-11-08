@@ -8,7 +8,7 @@ import css from './style';
 import global from '../global/style'
 
 export default function Reservas({ navigation }) {
-    const url = "";
+    const url = "http://10.87.202.133:8080/locacao/reservas";
     const [listaReservas, setListaReserva] = useState([]);
 
     useEffect(() => {
@@ -79,17 +79,19 @@ export default function Reservas({ navigation }) {
                                 :
                                 listaReservas.map((item, index) => {
                                     return (
-                                        <View style={css.card}>
+                                        <View style={css.card} key={index}>
                                             <View style={css.imagem}>
                                                 <Image source={{ uri: item.imagem }} style={{ width: '100%', height: '100%', borderTopLeftRadius: 15, borderBottomLeftRadius: 15 }} />
                                             </View>
                                             <View>
+                                                <Text style={css.txt}>Placa:</Text>
                                                 <Text style={css.txt}>Retirada:</Text>
                                                 <Text style={css.txt}>Devolução:</Text>
                                                 <Text style={css.txt}>Valor:</Text>
                                             </View>
                                             <View style={css.info}>
-                                                <Text style={css.ret}>{item.retirada}</Text>
+                                                <Text style={css.ret}>{item.veiculo}</Text>
+                                                <Text style={css.ret}>{item.data_retirada}</Text>
                                                 <Text style={css.dev}>{item.devolucao}</Text>
                                                 <Text style={css.val}>{item.valor}</Text>
                                             </View>

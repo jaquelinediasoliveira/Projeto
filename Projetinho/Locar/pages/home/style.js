@@ -65,4 +65,28 @@ export default StyleSheet.create({
         marginTop: "5%",
         padding: 10
     },
+    scroll:{
+        width: '100%',
+        height: '40%',
+        backgroundColor: 'red',
+        marginTop: '15%'
+    },
+    card: {
+        width: '60%',
+        height: 190,
+        alignItems: 'center',
+        justifyContent: 'space-between',
+        borderWidth: 1,
+        borderColor: '#9932CC',
+        borderRadius: 15,
+        marginTop: 13,
+        marginBottom: 13, 
+        shadowColor: "#000",
+        shadowOffset: {width: 0, height: 2,},
+        shadowOpacity: 0.25,
+        shadowRadius: 3.84,
+        backgroundColor: '#FDFBFB',
+        alignSelf: 'center',
+        elevation: 5,
+    }
 })

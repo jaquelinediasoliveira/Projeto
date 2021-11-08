@@ -1,6 +1,6 @@
 import React, { Component, useState } from 'react';
 
-import { View, Text, Image, TextInput, TouchableOpacity, Linking} from 'react-native'
+import { View, Text, Image, TextInput, TouchableOpacity, Linking, ToastAndroid, ScrollView} from 'react-native'
 import DateTimePicker from '@react-native-community/datetimepicker';
 import { AntDesign, Entypo } from '@expo/vector-icons';
 
@@ -13,17 +13,39 @@ import css from "./style"
 import Navbar from '../components/navbar'
 
  export default function Home ({navigation}){
-   const [date, setDate] = useState(new Date(1598051730000));
+   const [date, setDate] = useState(new Date());
+   const [dateDev, setDateDev] = useState(new Date());
    const [show, setShow] = useState(false);
+   const [tipo, setTipo] = useState(0);
 
    let [fontsLoaded] = useFonts({
       Roboto_300Light,
    })
 
    const setData = (event, selectedDate) => {
-      const currentDate = selectedDate || date;
-      setShow(false);
-      setDate(currentDate);
+      let pode = false;
+
+      if(tipo == 0) {
+         if(selectedDate >= new Date()) {
+            pode = true;
+            setDateDev(selectedDate);
+         }
+      }else {
+         if(selectedDate >= date) {
+            pode = true;
+         }
+      }
+
+      if(pode) {
+         let novaData = (tipo == 0) ? date : dateDev;
+         const currentDate = selectedDate || novaData;
+         if (tipo == 0){
+            setDate(currentDate);
+         } else{
+            setDateDev(currentDate);
+         } 
+      }      
+      setShow(false);   
    }
 
    const formatDate = (data) => {
@@ -34,7 +56,7 @@ import Navbar from '../components/navbar'
       let ano = data.getFullYear();
       return `${dia}/${mes}/${ano}`;
    }
-   
+
    if (!fontsLoaded) {
       return <AppLoading />;
    }else {
@@ -51,12 +73,14 @@ import Navbar from '../components/navbar'
                      <Entypo name="location-pin" size={28} color="purple" />
                     <TextInput placeholder=" Local de retirada" style={css.input}/>
                 </View>
-                <TouchableOpacity style={css.data} onPress={() => setShow(true)}>
+                <TouchableOpacity style={css.data} onPress={() => { setTipo(0); setShow(true) }}>
                   <AntDesign name="calendar" size={24} color="purple"/>
-                   <Text style={{marginLeft: "4%", fontFamily: "Roboto_300Light"}}>{formatDate(date)}</Text>
+                  <Text style={{marginLeft: "4%", fontFamily: "Roboto_300Light"}}>{formatDate(date)}</Text>
                 </TouchableOpacity>
-                <View style={css.data}>                  
-                </View>
+                <TouchableOpacity style={css.data} onPress={() => { setTipo(1); setShow(true) }}>
+                  <AntDesign name="calendar" size={24} color="purple"/>
+                  <Text style={{marginLeft: "4%", fontFamily: "Roboto_300Light"}}>{formatDate(dateDev)}</Text>
+                </TouchableOpacity>
                 {
                   show && (
                      <DateTimePicker
@@ -69,6 +93,13 @@ import Navbar from '../components/navbar'
                      />
                   )
                 }
+               <View style={css.scroll}>
+                  <ScrollView>
+                     <View style={css.card}>
+                        
+                     </View>
+                  </ScrollView>
+               </View>
              </View>
 
              <Navbar
