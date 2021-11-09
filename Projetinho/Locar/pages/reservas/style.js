@@ -20,20 +20,6 @@ export default StyleSheet.create({
         alignSelf: 'center',
         elevation: 5,
     },
-    ret:{
-        color: 'green',
-        marginRight: 5,
-        marginBottom: 5,
-        fontWeight: 'bold'
-    },
-    dev:{
-        color: 'purple',
-        marginBottom: 5,
-        fontWeight: 'bold'
-    },
-    val:{
-        fontWeight: 'bold'
-    },
     imagem:{
         width: '40%',
         height: '99%'

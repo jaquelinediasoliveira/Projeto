@@ -18,25 +18,22 @@ export default StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center'
     },
-    content: {
-        width: "100%",
-        height: "82%",
-        alignItems: 'center'
-    },
     text:{
        fontSize: 18, 
        marginTop: '8%',
        fontFamily: "Roboto_300Light",
+       alignSelf: 'center'
     },
     localizacao:{
-        width: '65%',
-        height: '10%',
+        width: 270,
+        height: 45,
         borderWidth: 1,
         borderColor: '#9932CC',
         borderRadius: 15,
         flexDirection: 'row',
         alignItems: 'center',
-        marginTop: "5%"
+        marginTop: "5%",
+        alignSelf: 'center'
     },
     input:{
         width: '95%',
@@ -55,15 +52,16 @@ export default StyleSheet.create({
         height: '60%'
     },
     data:{
-        width: '65%',
-        height: '10%',
+        width: 270,
+        height: 45,
         borderWidth: 1,
         borderColor: '#9932CC',
         borderRadius: 15,
         flexDirection: 'row',
         alignItems: 'center',
         marginTop: "5%",
-        padding: 10
+        padding: 10,
+        alignSelf: 'center'
     },
     scroll:{
         width: '100%',
@@ -71,14 +69,17 @@ export default StyleSheet.create({
         backgroundColor: 'red',
         marginTop: '15%'
     },
+    scrollview:{
+        height: '100%',
+        
+    },
     card: {
-        width: '60%',
-        height: 190,
+        width: 200,
         alignItems: 'center',
         justifyContent: 'space-between',
         borderWidth: 1,
         borderColor: '#9932CC',
-        borderRadius: 15,
+        borderRadius: 10,
         marginTop: 13,
         marginBottom: 13, 
         shadowColor: "#000",
@@ -88,5 +89,11 @@ export default StyleSheet.create({
         backgroundColor: '#FDFBFB',
         alignSelf: 'center',
         elevation: 5,
+        marginRight: 10,
+        marginLeft: 10
+    },
+    carros: {
+        marginTop: '5%',
+        width: 275
     }
 })

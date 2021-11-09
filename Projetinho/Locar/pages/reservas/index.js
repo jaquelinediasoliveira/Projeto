@@ -90,10 +90,10 @@ export default function Reservas({ navigation }) {
                                                 <Text style={css.txt}>Valor:</Text>
                                             </View>
                                             <View style={css.info}>
-                                                <Text style={css.ret}>{item.veiculo}</Text>
-                                                <Text style={css.ret}>{item.data_retirada}</Text>
-                                                <Text style={css.dev}>{item.devolucao}</Text>
-                                                <Text style={css.val}>{item.valor}</Text>
+                                                <Text style={{color: 'green', marginRight: 5, marginBottom: 5, fontWeight: 'bold'}}>{item.veiculo}</Text>
+                                                <Text style={{color: 'green', marginRight: 5, marginBottom: 5, fontWeight: 'bold'}}>{item.data_retirada}</Text>
+                                                <Text style={{color: 'purple', marginBottom: 5, fontWeight: 'bold'}}>{item.devolucao}</Text>
+                                                <Text style={{fontWeight: 'bold'}}>{item.valor}</Text>
                                             </View>
                                         </View>
                                     )
