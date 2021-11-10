@@ -1,6 +1,6 @@
 import React, { Component, useState } from 'react';
 
-import { View, Text, Image, TextInput, TouchableOpacity, Linking, ToastAndroid, ScrollView, Button } from 'react-native'
+import { View, Text, Image, TextInput, TouchableOpacity, ToastAndroid, ScrollView } from 'react-native'
 import DateTimePicker from '@react-native-community/datetimepicker';
 import { AntDesign, Entypo } from '@expo/vector-icons';
 
@@ -18,10 +18,34 @@ export default function Home({ navigation }) {
    const [dateDev, setDateDev] = useState(new Date());
    const [show, setShow] = useState(false);
    const [tipo, setTipo] = useState(0);
+   const [selecionado, setSelecionado] = useState(-1);
 
    let [fontsLoaded] = useFonts({
       Roboto_300Light,
    })
+
+   const carros = [
+      {
+         "img":require('../assets/carro.jpg'),
+         "texto":"Marca"
+      },
+      {
+         "img":require('../assets/carro.jpg'),
+         "texto":"carro"
+      },
+      {
+         "img":require('../assets/carro.jpg'),
+         "texto":"carro"
+      },
+      {
+         "img":require('../assets/carro.jpg'),
+         "texto":"carro"
+      },
+      {
+         "img":require('../assets/carro.jpg'),
+         "texto":"carro"
+      }
+   ]
 
    const setData = (event, selectedDate) => {
       let pode = false;
@@ -83,18 +107,32 @@ export default function Home({ navigation }) {
                      <AntDesign name="calendar" size={24} color="purple" />
                      <Text style={{ marginLeft: "4%", fontFamily: "Roboto_300Light" }}>{formatDate(dateDev)}</Text>
                   </TouchableOpacity>
+                  <Text style={{marginTop: 25, marginLeft: 20,marginBottom: -10, fontSize: 18}}>Veículos disponíveis:</Text>
                   <View style={css.carros}>
                      <ScrollView horizontal={true}>
-                        <View style={css.card}>
-                           
-                        </View>
-                        <View style={css.card}></View>
-                        <View style={css.card}></View>
-                        <View style={css.card}></View>
+                        {
+                           carros.map((car, index) => {
+                              return(
+                                 <View style={[css.card, (selecionado == index) ? { borderColor : '#91DE25'} : {}]} key={index}>
+                                    <Image source={car.img} style={css.imagem}/>
+                                    <Text>{car.texto}</Text>
+                                    <Text>{car.texto}</Text>
+                                    <Text>{car.texto}</Text>
+                                    <Text style={css.texto}>Carro</Text>
+                                    <TouchableOpacity style={[css.botao, (selecionado == index) ? {backgroundColor: '#E0EBD0', borderColor : '#91DE25'} : {}]} onPress={() => {
+                                       setSelecionado(index);
+                                    }} >
+                                       <Text style={(selecionado == index) ? {color: '#567A23'} : {color: 'purple'}}>{(selecionado == index) ? 'Selecionado' : 'Selecionar'}</Text>
+                                    </TouchableOpacity>
+                                 </View>
+                              )
+                           })
+                        }
                      </ScrollView>
                   </View>
+                  <Text>Confirmar aluguel?</Text>
                   <TouchableOpacity>
-                     <Text>OI</Text>
+                     <Text>Confirmar</Text>
                   </TouchableOpacity>
                </ScrollView>
 

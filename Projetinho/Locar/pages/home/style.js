@@ -27,7 +27,7 @@ export default StyleSheet.create({
     localizacao:{
         width: 270,
         height: 45,
-        borderWidth: 1,
+        borderWidth: 2,
         borderColor: '#9932CC',
         borderRadius: 15,
         flexDirection: 'row',
@@ -54,7 +54,7 @@ export default StyleSheet.create({
     data:{
         width: 270,
         height: 45,
-        borderWidth: 1,
+        borderWidth: 2,
         borderColor: '#9932CC',
         borderRadius: 15,
         flexDirection: 'row',
@@ -63,24 +63,17 @@ export default StyleSheet.create({
         padding: 10,
         alignSelf: 'center'
     },
-    scroll:{
-        width: '100%',
-        height: '40%',
-        backgroundColor: 'red',
-        marginTop: '15%'
-    },
     scrollview:{
-        height: '100%',
-        
+        height: '100%'  
     },
     card: {
         width: 200,
         alignItems: 'center',
         justifyContent: 'space-between',
-        borderWidth: 1,
+        borderWidth: 2,
         borderColor: '#9932CC',
         borderRadius: 10,
-        marginTop: 13,
+        marginTop: 5,
         marginBottom: 13, 
         shadowColor: "#000",
         shadowOffset: {width: 0, height: 2,},
@@ -94,6 +87,26 @@ export default StyleSheet.create({
     },
     carros: {
         marginTop: '5%',
-        width: 275
+        width: 410
+    },
+    imagem:{
+        width: '100%',
+        resizeMode: "contain",
+        marginTop: -262,
+        marginBottom: -250,
+        borderTopLeftRadius: 12,
+        borderTopRightRadius: 12
+    },
+    texto:{
+        marginBottom: 10
+    },
+    botao:{
+        borderRadius: 15,
+        backgroundColor: '#F7EFFA',
+        width: '45%',
+        height: '12%',
+        justifyContent: 'center',
+        alignItems: 'center',
+        marginBottom: 10
     }
 })
