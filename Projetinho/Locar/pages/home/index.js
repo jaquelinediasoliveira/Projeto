@@ -1,10 +1,11 @@
-import React, { Component, useState } from 'react';
+import React, { Component, useState, useEffect } from 'react';
 
 import { View, Text, Image, TextInput, TouchableOpacity, ToastAndroid, ScrollView } from 'react-native'
 import DateTimePicker from '@react-native-community/datetimepicker';
 import { AntDesign, Entypo } from '@expo/vector-icons';
 
 import AppLoading from 'expo-app-loading';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import { useFonts, Roboto_300Light } from '@expo-google-fonts/roboto';
 
@@ -14,11 +15,15 @@ import global from "../global/style"
 import Navbar from '../components/navbar'
 
 export default function Home({ navigation }) {
+   const [logado, setLogado] = useState(false);
+   const [local, setLocal] = useState("");
    const [date, setDate] = useState(new Date());
    const [dateDev, setDateDev] = useState(new Date());
    const [show, setShow] = useState(false);
    const [tipo, setTipo] = useState(0);
    const [selecionado, setSelecionado] = useState(-1);
+
+   
 
    let [fontsLoaded] = useFonts({
       Roboto_300Light,
@@ -87,17 +92,15 @@ export default function Home({ navigation }) {
    } else {
       return (
          <View style={css.tela}>
-
             <View style={css.header}>
                <Image source={require('../assets/logo.png')} style={css.logo} />
             </View>
-
             <View style={global.body}>
-               <ScrollView>
-                  <Text style={css.text}>Bem-Vindos ao nosso App!</Text>
+                  <ScrollView>
+                  <Text style={[global.question, {alignSelf: 'center'}]}>Novo Aluguel</Text>
                   <View style={css.localizacao}>
                      <Entypo name="location-pin" size={28} color="purple" />
-                     <TextInput placeholder=" Local de retirada" style={css.input} />
+                     <TextInput placeholder=" Local de retirada" style={css.input} value={local} onChange={(e) => setLocal(e.value)}/>
                   </View>
                   <TouchableOpacity style={css.data} onPress={() => { setTipo(0); setShow(true) }}>
                      <AntDesign name="calendar" size={24} color="purple" />
@@ -107,8 +110,8 @@ export default function Home({ navigation }) {
                      <AntDesign name="calendar" size={24} color="purple" />
                      <Text style={{ marginLeft: "4%", fontFamily: "Roboto_300Light" }}>{formatDate(dateDev)}</Text>
                   </TouchableOpacity>
-                  <Text style={{marginTop: 25, marginLeft: 20,marginBottom: -10, fontSize: 18}}>Veículos disponíveis:</Text>
-                  <View style={css.carros}>
+                  <Text style={[global.question, {alignSelf: 'center', marginBottom: -1}]}>Veículos disponíveis</Text>
+                  <View style={{width: 410}}>
                      <ScrollView horizontal={true}>
                         {
                            carros.map((car, index) => {
@@ -130,32 +133,47 @@ export default function Home({ navigation }) {
                         }
                      </ScrollView>
                   </View>
-                  <Text>Confirmar aluguel?</Text>
-                  <TouchableOpacity>
-                     <Text>Confirmar</Text>
-                  </TouchableOpacity>
+                  {
+                     (logado) ?
+                        <View>
+                           <Text style={[global.question, {alignSelf: 'center', marginTop: -5}]}>Confirmar aluguel?</Text>
+                           <View style={{width: 411, height: 150, flexDirection: 'row', justifyContent: 'space-evenly'}}>
+                              <TouchableOpacity style={[css.botao, {width: 130, height: 50}]}>
+                                 <Text style={{fontSize: 18}}>Confirmar</Text>
+                              </TouchableOpacity>
+                              <TouchableOpacity style={[css.botao, {width: 130, height: 50}]} onPress={() => {
+                                 setLocal("");
+                                 setDate(new Date());
+                                 setDateDev(new Date());
+                                 setSelecionado(-1);
+                              }}>
+                                 <Text style={{fontSize: 18}}>Cancelar</Text>
+                              </TouchableOpacity>
+                           </View>
+                        </View>
+                     :
+                        <View>
+                           <Text>Faça o login, pfv. AGORA !</Text>
+                        </View>
+                  }
+                  {
+                     show && (
+                        <DateTimePicker
+                           testID="dateTimePicker"
+                           value={date}
+                           mode="date"
+                           is24Hour={true}
+                           display="spinner"
+                           onChange={setData}
+                        />
+                     )
+                  }
                </ScrollView>
-
-
-               {
-                  show && (
-                     <DateTimePicker
-                        testID="dateTimePicker"
-                        value={date}
-                        mode="date"
-                        is24Hour={true}
-                        display="spinner"
-                        onChange={setData}
-                     />
-                  )
-               }
-            </View>
-
+            </View> 
             <Navbar
                navigation={navigation}
                screen="Home"
             />
-
          </View>
       )
    }

@@ -32,12 +32,12 @@ export default StyleSheet.create({
         borderRadius: 15,
         flexDirection: 'row',
         alignItems: 'center',
-        marginTop: "5%",
         alignSelf: 'center'
     },
     input:{
         width: '95%',
-        height: '100%'
+        height: '100%',
+        fontSize: 16
     },
     footer:{
         width: '100%',
@@ -76,7 +76,7 @@ export default StyleSheet.create({
         marginTop: 5,
         marginBottom: 13, 
         shadowColor: "#000",
-        shadowOffset: {width: 0, height: 2,},
+        shadowOffset: {width: 0, height: 2},
         shadowOpacity: 0.25,
         shadowRadius: 3.84,
         backgroundColor: '#FDFBFB',
@@ -84,10 +84,6 @@ export default StyleSheet.create({
         elevation: 5,
         marginRight: 10,
         marginLeft: 10
-    },
-    carros: {
-        marginTop: '5%',
-        width: 410
     },
     imagem:{
         width: '100%',
