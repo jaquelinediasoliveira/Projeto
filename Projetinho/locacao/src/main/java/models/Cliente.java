@@ -13,11 +13,11 @@ public class Cliente {
 
 	SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
 	
-	private String cpf_passaporte;
+	private int id_cliente;
+	private String cpf;
+	private String passaporte;
 	private String nome_completo;
 	private String cep;
-	private String email;
-	private String senha;
 	private Date data_nascimento;
 	private String telefone;
 	private String endereco;
@@ -27,25 +27,39 @@ public class Cliente {
 	
 	}
 
-	public Cliente(String cpf_passaporte, String nome_completo, String cep, String email, Date dataNascimento, String telefone, String endereco, String senha) {
-		this.cpf_passaporte= cpf_passaporte;
+	public Cliente(int id_cliente, String cpf, String passaporte, String nome_completo, String cep, Date dataNascimento, String telefone, String endereco) {
+		this.id_cliente = id_cliente;
+		this.cpf= cpf;
+		this.passaporte = passaporte;
 		this.nome_completo = nome_completo;
 		this.data_nascimento = dataNascimento;
 		this.telefone = telefone;
 		this.endereco = endereco;
 		this.cep = cep;
-		this.email = email;
-		this.senha = senha;
+		
 	}
 	
 	
-	public String getCpf_passaporte() {
-		return cpf_passaporte;
+	public int getId_cliente() {
+		return this.id_cliente;
 	}
-	public void setCpf_passaporte(String cpf) {
-		this.cpf_passaporte = cpf;
+	public void setId_cliente(int id_cliente) {
+		this.id_cliente = id_cliente;
 	}
 	
+	public String getCpf() {
+		return cpf;
+	}
+	public void setCpf(String cpf) {
+		this.cpf = cpf;
+	}
+	
+	public String getPassaporte() {
+		return this.passaporte;
+	}
+	public void setPassaporte(String passaporte) {
+		this.passaporte = passaporte;
+	}
 	
 	public String getNome_completo() {
 		return nome_completo;
@@ -62,21 +76,6 @@ public class Cliente {
 		this.cep = cep;
 	}
 	
-	public String getEmail() {
-		return this.email;
-	}
-	
-	public void setEmail(String email) {
-		this.email = email;
-	}
-	
-	public String getSenha() {
-		return this.senha;
-	}
-	
-	public void setSenha(String senha) {
-		this.senha = senha;
-	}
 	
 	public Date getDataNascimento() {
 		return data_nascimento;
@@ -123,7 +122,7 @@ public class Cliente {
 	
 	@Override
 	public String toString() {
-	return cpf_passaporte + "	|	" +  nome_completo + "	|	" + cep + "	|	" + email + "	|	" + senha + "	|	" +  formato.format(data_nascimento) + "	|	" + telefone + "	|	" + endereco;
+	return id_cliente + " | " + cpf + " | " + passaporte + " | " +  nome_completo + " | " + cep +  " | " +  formato.format(data_nascimento) + " | " + telefone + " | " + endereco + "\r\t";
 	}
 
 	public JSONObject toJSON() {
@@ -131,12 +130,11 @@ public class Cliente {
 		JSONObject json = new JSONObject();
 		
 		try {
-			
-			json.put("cpf_passaporte", cpf_passaporte);
+			json.put("id_cliente", id_cliente);
+			json.put("cpf", cpf);
+			json.put("passaporte", passaporte);
 			json.put("nome_completo", nome_completo);
 			json.put("cep", cep);
-			json.put("email", email);
-			json.put("senha", senha);
 			json.put("data_nascimento", data_nascimento);
 			json.put("telefone", telefone);
 			json.put("endereco", endereco);
