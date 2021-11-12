@@ -1,12 +1,12 @@
-var local = localStorage.getItem('id_cliente')
-var ulSair = document.querySelector('.menu-login')
+var cliente = localStorage.getItem('id_cliente')
 
 let toindex = document.querySelector("#logo")
 let tologin = document.querySelector("#tologin")
 let tousuario = document.querySelector("#tousuario")
 let tocadastrar = document.querySelector("#tocadastrar")
+var ulSair = document.querySelector('.menu-login')
 
-if (local !== null) {
+if (cliente !== null) {
     tologin.innerHTML = localStorage.getItem("id_cliente")
 
     let iconNome = document.createElement("i")
