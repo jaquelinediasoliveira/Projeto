@@ -72,32 +72,32 @@ export default function Reservas({ navigation }) {
                         {
                             (listaReservas.length === 0)
                                 ?
-                                <View style={css.card2}>
-                                    <Text style={css.text}>Você ainda não possui reservas</Text>
-                                    <Entypo name="emoji-sad" size={25} color="#c0c0c0" />
-                                </View>
+                                    <View style={css.card2}>
+                                        <Text style={css.text}>Você ainda não possui reservas</Text>
+                                        <Entypo name="emoji-sad" size={25} color="#c0c0c0" />
+                                    </View>
                                 :
-                                listaReservas.map((item, index) => {
-                                    return (
-                                        <View style={css.card} key={index}>
-                                            <View style={css.imagem}>
-                                                <Image source={{ uri: item.imagem }} style={{ width: '100%', height: '100%', borderTopLeftRadius: 15, borderBottomLeftRadius: 15 }} />
+                                    listaReservas.map((item, index) => {
+                                        return (
+                                            <View style={css.card} key={index}>
+                                                <View style={css.imagem}>
+                                                    <Image source={{ uri: item.imagem }} style={{ width: '100%', height: '100%', borderTopLeftRadius: 15, borderBottomLeftRadius: 15 }} />
+                                                </View>
+                                                <View>
+                                                    <Text style={css.txt}>Placa:</Text>
+                                                    <Text style={css.txt}>Retirada:</Text>
+                                                    <Text style={css.txt}>Devolução:</Text>
+                                                    <Text style={css.txt}>Valor:</Text>
+                                                </View>
+                                                <View style={css.info}>
+                                                    <Text style={{color: 'green', marginRight: 5, marginBottom: 5, fontWeight: 'bold'}}>{item.veiculo}</Text>
+                                                    <Text style={{color: 'green', marginRight: 5, marginBottom: 5, fontWeight: 'bold'}}>{item.data_retirada}</Text>
+                                                    <Text style={{color: 'purple', marginBottom: 5, fontWeight: 'bold'}}>{item.devolucao}</Text>
+                                                    <Text style={{fontWeight: 'bold'}}>{item.valor}</Text>
+                                                </View>
                                             </View>
-                                            <View>
-                                                <Text style={css.txt}>Placa:</Text>
-                                                <Text style={css.txt}>Retirada:</Text>
-                                                <Text style={css.txt}>Devolução:</Text>
-                                                <Text style={css.txt}>Valor:</Text>
-                                            </View>
-                                            <View style={css.info}>
-                                                <Text style={{color: 'green', marginRight: 5, marginBottom: 5, fontWeight: 'bold'}}>{item.veiculo}</Text>
-                                                <Text style={{color: 'green', marginRight: 5, marginBottom: 5, fontWeight: 'bold'}}>{item.data_retirada}</Text>
-                                                <Text style={{color: 'purple', marginBottom: 5, fontWeight: 'bold'}}>{item.devolucao}</Text>
-                                                <Text style={{fontWeight: 'bold'}}>{item.valor}</Text>
-                                            </View>
-                                        </View>
-                                    )
-                                })
+                                        )
+                                    })
                         }
                     </ScrollView>
                 </View>

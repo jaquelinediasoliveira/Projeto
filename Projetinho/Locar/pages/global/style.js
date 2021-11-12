@@ -28,6 +28,7 @@ export default StyleSheet.create({
         color: 'purple',
         fontSize: 23,
         marginBottom: 30,
-        marginTop: 30
+        marginTop: 30,
+        alignSelf: 'center'
     }
 })

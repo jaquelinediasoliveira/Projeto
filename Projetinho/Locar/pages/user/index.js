@@ -1,16 +1,20 @@
 import React,{useState} from 'react';
-import { View, Text, TouchableOpacity, TextInput,ScrollView} from 'react-native';
+import { View, Text, TouchableOpacity, TextInput,ScrollView, ImageEditor} from 'react-native';
 import css from "./style"
 import global from '../global/style'
 
 import Navbar from '../components/navbar'
+import { AntDesign } from '@expo/vector-icons';
+
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export default function Perfil({navigation}) {
     // const url = "http://10.87.202.133:8080/locacao/clientes";
-    const [listaCliente, setListaCliente] = useState([{
-        'email': 'jaquelinediasoliveira5@gmail.com',
-        'senha': 'seila555'
-    }]);
+    const [listaCliente, setListaCliente] = useState([]);
+
+    const login = () => {
+
+    }
 
     const handleNavigate = (tela) => {
         navigation.navigate(tela);
@@ -27,14 +31,14 @@ export default function Perfil({navigation}) {
                 <ScrollView>
                     {
                         (listaCliente.length === 0)
-                            ?
+                        ?
                             <View>
                                 <Text style={global.question}>Login</Text>
                                 <View style={css.login}>
                                     <Text style={css.text} >Insira seu documento</Text>
                                     <TextInput placeholder="E-mail" style={css.input}/>
                                     <TextInput secureTextEntry={true} placeholder="Senha" style={css.input}/>
-                                    <TouchableOpacity style={css.entrar}>
+                                    <TouchableOpacity style={css.entrar} onPress={() => login()}>
                                         <Text style={css.text}>Entrar</Text>
                                     </TouchableOpacity>
                                 </View>
@@ -43,10 +47,25 @@ export default function Perfil({navigation}) {
                                     <Text style={css.text} onPress={() => handleNavigate("Cadastro")}>Cadastrar</Text>
                                 </TouchableOpacity>
                             </View>
-                            :
-                            <View>
-                                <Text>{listaCliente[0].email}</Text>
-                            </View>
+                        :
+                            
+                        listaCliente.map((item,index) => {
+                            return (
+                               <View>
+                                   <Text style={global.question}>Bem-Vindo!</Text>
+                                   <Text>Nome do usuário: {item.nome_completo}</Text>
+                                   <Text>Nascimento: {item.data_nascimento}</Text>
+                                   <Text>Telefone: {item.telefone}</Text>
+                                   <Text>Endereço: {item.endereco}</Text>
+                                   <Text>CEP: {item.cep}</Text>
+                                   <View style={css.edit}>
+                                       <Text>Editar</Text>
+                                       <AntDesign name="edit" size={24} color="purple" />
+                                   </View>
+                               </View>         
+                            )
+                        })
+                            
                     }
                 </ScrollView>
             </View>
@@ -54,7 +73,7 @@ export default function Perfil({navigation}) {
             <Navbar
                 navigation={navigation}
                 screen="User"
-             />
+            />
         </View>
     );
 }

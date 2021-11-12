@@ -23,7 +23,15 @@ export default function Home({ navigation }) {
    const [tipo, setTipo] = useState(0);
    const [selecionado, setSelecionado] = useState(-1);
 
-   
+   useEffect(() => {
+      getLogado();
+   }, [])
+
+   const getLogado = async () => {
+      const value = await AsyncStorage.getItem('cliente');
+      if(value === null) setLogado(false)
+      else setLogado(true);
+   }
 
    let [fontsLoaded] = useFonts({
       Roboto_300Light,
@@ -96,7 +104,7 @@ export default function Home({ navigation }) {
                <Image source={require('../assets/logo.png')} style={css.logo} />
             </View>
             <View style={global.body}>
-                  <ScrollView>
+               <ScrollView>
                   <Text style={[global.question, {alignSelf: 'center'}]}>Novo Aluguel</Text>
                   <View style={css.localizacao}>
                      <Entypo name="location-pin" size={28} color="purple" />
@@ -152,8 +160,9 @@ export default function Home({ navigation }) {
                            </View>
                         </View>
                      :
-                        <View>
-                           <Text>Faça o login, pfv. AGORA !</Text>
+                        <View style={{height: 300, width: 400}}>
+                           <Text style={[global.question, {marginLeft: 10}]}>Para reserva efetuar, necessário estar logado é !</Text>
+                           <Image source={require('../assets/yoda-icon-18.jpg')} style={{width: '20%', height: '15%', alignSelf: 'center'}}/>
                         </View>
                   }
                   {

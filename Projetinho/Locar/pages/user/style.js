@@ -5,7 +5,7 @@ export default StyleSheet.create({
         borderRadius: 15,
         backgroundColor: '#F7EFFA',
         width: '40%',
-        height: "10%",
+        height: 50,
         justifyContent: 'center',
         alignItems: 'center',
         alignSelf: 'center'
@@ -16,15 +16,16 @@ export default StyleSheet.create({
     login:{
         borderRadius: 15,
         backgroundColor: '#FDFBFB',
-        width: '70%',
-        height: '50%',
+        width: 270,
+        height: 250,
         justifyContent: 'space-evenly',
         alignItems: 'center',
         shadowColor: "#000",
         shadowOffset: {width: 0, height: 2,},
         shadowOpacity: 0.25,
         shadowRadius: 3.84,
-        elevation: 5
+        elevation: 5,
+        alignSelf: 'center',
     },
     input:{
         width: '75%',
