@@ -30,7 +30,6 @@ header {
 }
 
 .menu-login {
-    /* border: #ddd solid 2px; */
     list-style: none;
     font-weight: 500;
     display: flex;
@@ -39,6 +38,11 @@ header {
     background-color: #27274b;
     border: #5c40aa solid 2px;
     border-radius: 6px;
+}
+
+#reverse-fix {
+    display: flex;
+    flex-direction: row-reverse;
 }
 
 .menu-login li {
@@ -106,6 +110,7 @@ header {
     margin: 1px;
     display: flex;
     background-color: #fff;
+    box-shadow: 2px 2px 7px #27274b33;
     border: #5c40aa solid 1px;
     /* border: 1px solid #27274b; */
     border-radius: 6px;
@@ -125,6 +130,7 @@ button {
     margin: 2px;
     color: #fff;
     background-color: #27274b;
+    box-shadow: 2px 2px 7px #27274b33;
     /* border: none; */
     border-radius: 6px;
     cursor: pointer;
@@ -198,5 +204,16 @@ footer > p {
     }
     .header {
         width: 90%;
+    }
+}
+
+@media (max-width: 450px) {
+    .header {
+        justify-content: center;
+        align-items: center;
+        height: 20%;
+    }
+    #logo {
+        margin: 10px;
     }
 }
