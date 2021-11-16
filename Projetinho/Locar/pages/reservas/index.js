@@ -19,6 +19,16 @@ export default function Reservas({ navigation }) {
             })
             .catch(err => { console.log(err) });
     }, []);
+
+    const formatDate = (nasc) => {
+        let dia = nasc.getDate();
+        dia = (dia < 10) ? "0" + dia : dia;
+        let mes = nasc.getMonth() + 1;
+        mes = (mes < 10) ? "0" + mes : mes;
+        let ano = nasc.getFullYear();
+        return `${dia}/${mes}/${ano}`;
+     }
+
     // const setListaReserva = 
     //     [
     //         {
@@ -88,12 +98,14 @@ export default function Reservas({ navigation }) {
                                                     <Text style={css.txt}>Retirada:</Text>
                                                     <Text style={css.txt}>Devolução:</Text>
                                                     <Text style={css.txt}>Valor:</Text>
+                                                    <Text style={css.txt}>Filial:</Text>
                                                 </View>
                                                 <View style={css.info}>
-                                                    <Text style={{color: 'green', marginRight: 5, marginBottom: 5, fontWeight: 'bold'}}>{item.veiculo}</Text>
-                                                    <Text style={{color: 'green', marginRight: 5, marginBottom: 5, fontWeight: 'bold'}}>{item.data_retirada}</Text>
-                                                    <Text style={{color: 'purple', marginBottom: 5, fontWeight: 'bold'}}>{item.devolucao}</Text>
+                                                    <Text style={{color: 'green', marginRight: 10, marginBottom: 5, fontWeight: 'bold'}}>{item.veiculo}</Text>
+                                                    <Text style={{color: 'green', marginRight: 10, marginBottom: 5, fontWeight: 'bold'}}>{formatDate(new Date(item.data_retirada))}</Text>
+                                                    <Text style={{color: 'purple', marginRight: 10, marginBottom: 5, fontWeight: 'bold'}}>{formatDate(new Date(item.devolucao))}</Text>
                                                     <Text style={{fontWeight: 'bold'}}>{item.valor}</Text>
+                                                    <Text style={{fontWeight: 'bold'}}>{item.id_loja}</Text>
                                                 </View>
                                             </View>
                                         )

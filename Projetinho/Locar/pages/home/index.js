@@ -161,8 +161,12 @@ export default function Home({ navigation }) {
                         </View>
                      :
                         <View style={{height: 300, width: 400}}>
-                           <Text style={[global.question, {marginLeft: 10}]}>Para reserva efetuar, necessário estar logado é !</Text>
-                           <Image source={require('../assets/yoda-icon-18.jpg')} style={{width: '20%', height: '15%', alignSelf: 'center'}}/>
+                           <Text style={[global.question, {marginLeft: 10}]}>Faça login para concluir sua reserva </Text>
+                           <View style={{flexDirection: 'row', width: 200, marginLeft: 55}}>
+                              <Text style={{fontSize: 16}}>Clique no ícone </Text>
+                              <AntDesign name="user" size={24} color="black" />
+                              <Text style={{fontSize: 16}}> que aparece abaixo</Text>
+                           </View>
                         </View>
                   }
                   {

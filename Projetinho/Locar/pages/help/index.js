@@ -35,18 +35,18 @@ export default function Help({navigation}) {
 
                 <View style={css.cards}>
                     <Text style={{fontWeight: "bold", fontSize: 16}}>Central de reservas 24h</Text>
-                    <View style={css.tel} onPress={() => {Linking.openURL(`tel:0800 90007654`)}}>
+                    <TouchableOpacity style={css.tel} onPress={() => {Linking.openURL(`tel:0800 90007654`)}}>
                         <Feather name="phone" size={20} color="black" />
                         <Text>  0800 90007654</Text>
-                    </View>
+                    </TouchableOpacity>
                 </View>
 
                 <View style={css.cards}>
                     <Text style={{fontWeight: "bold", fontSize: 16}}>Assistência técnica 24h</Text>
-                    <View style={css.tel} onPress={() => {Linking.openURL(`tel:0800 484 7231`)}}>
+                    <TouchableOpacity style={css.tel} onPress={() => {Linking.openURL(`tel:0800 484 7231`)}}>
                         <Feather name="phone" size={20} color="black" />
                         <Text>  0800 484 7231</Text>
-                    </View>
+                    </TouchableOpacity>
                 </View>
 
             </View>
