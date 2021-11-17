@@ -1,11 +1,44 @@
 import React, { useState } from 'react';
 import { View, Text, TouchableOpacity, TextInput, ScrollView } from 'react-native';
-import { Picker } from '@react-native-picker/picker'
 import css from "./style"
 import global from '../global/style'
 
 export default function Reservas({navigation}){
-    const [selectedValue, setSelectedValue] = useState("uf");
+    const url = "http://10.87.202.133:8080/locacao/clientes";
+    const [cpf, setCpf] = useState("");
+    const [passaporte, setPassaporte] = useState("");
+    const [nomeCompleto, setNomeCompleto] = useState("");
+    const [telefone, setTelefone] = useState("");
+    const [nascimento, setNascimento] = useState("");
+    const [email, setEmail] = useState("");
+    const [endereco, setEndereco] = useState("");
+    const [cep, setCep] = useState("");
+    const [senha, setSenha] = useState("");
+
+    const cadastrar = () => {
+        fetch(`${url}?id_cliente=${data.id_cliente}`, {
+            method: "post",
+            body: {
+                cpf: cpf,
+                passaporte: passaporte,
+                nome_completo: nomeCompleto,
+                telefone: telefone,
+                data_nascimento: nascimento,
+                email: email,
+                endereco: endereco,
+                cep: cep,
+                senha: senha,
+                tipo_usuario: false,
+                logOn: false
+            }
+        })
+        .then((resp) => { return resp.json() })
+        .then(data => {
+            setListaReserva(data);
+        })
+        .catch(err => { console.log(err) });
+
+    }
 
     return(
         <View style={global.tela}>
@@ -14,53 +47,16 @@ export default function Reservas({navigation}){
             </View>
             <View style={css.scroll}>
                 <ScrollView>
-                    <TextInput placeholder="CPF/Passaporte" style={css.input}/>
-                    <TextInput placeholder="Nome completo" style={css.input}/>
-                    <TextInput placeholder="Telefone" style={css.input}/>
-                    <TextInput placeholder="Data de nascimento" style={css.input}/>
-                    <TextInput placeholder="E-mail" style={css.input}/>
-                    <View style={css.end}>
-                        <TextInput placeholder="Cidade" style={css.city}/>
-                            <View style={css.uf}>
-                                <Picker
-                                    selectedValue={selectedValue}
-                                    style={{width:'100%',height:'100%'}}
-                                    onValueChange={(itemValue, itemIndex) => setSelectedValue(itemValue)}
-                                >
-                                    <Picker.Item label="UF" enabled={false} value="uf" style={{color: 'gray'}}/>
-                                    <Picker.Item label="AC" value="ac" />
-                                    <Picker.Item label="AL" value="al" />
-                                    <Picker.Item label="AP" value="ap" />
-                                    <Picker.Item label="AM" value="am" />
-                                    <Picker.Item label="BA" value="ba" />
-                                    <Picker.Item label="CE" value="ce" />
-                                    <Picker.Item label="ES" value="es" />
-                                    <Picker.Item label="GO" value="go" />
-                                    <Picker.Item label="MA" value="ma" />
-                                    <Picker.Item label="MT" value="mt" />
-                                    <Picker.Item label="MS" value="ms" />
-                                    <Picker.Item label="PA" value="pa" />
-                                    <Picker.Item label="PB" value="pb" />
-                                    <Picker.Item label="PR" value="pr" />
-                                    <Picker.Item label="PE" value="pe" />
-                                    <Picker.Item label="PI" value="pi" />
-                                    <Picker.Item label="RJ" value="rj" />
-                                    <Picker.Item label="RN" value="rn" />
-                                    <Picker.Item label="RS" value="rs" />
-                                    <Picker.Item label="RO" value="ro" />
-                                    <Picker.Item label="RR" value="rr" />
-                                    <Picker.Item label="SC" value="sc" />
-                                    <Picker.Item label="SP" value="sp" />
-                                    <Picker.Item label="SE" value="se" />
-                                    <Picker.Item label="TO" value="to" />
-                                    <Picker.Item label="DF" value="df" />
-                                </Picker>
-                            </View>
-                    </View>
-                    <TextInput placeholder="Logradouro" style={css.input}/>
-                    <TextInput placeholder="Bairro" style={css.input}/>
-                    <TextInput placeholder="Senha" style={css.input}/>
-                    <TouchableOpacity style={css.entrar}>
+                    <TextInput placeholder="CPF" style={css.input} value={cpf} onChangeText={setCpf}/>
+                    <TextInput placeholder="Passaporte" style={css.input} value={passaporte} onChangeText={setPassaporte}/>
+                    <TextInput placeholder="Nome Completo" style={css.input} value={nomeCompleto} onChangeText={setNomeCompleto}/>
+                    <TextInput placeholder="Telefone" style={css.input} value={telefone} onChangeText={setTelefone}/>
+                    <TextInput placeholder="Data de Nascimento" style={css.input} value={nascimento} onChangeText={setNascimento}/>
+                    <TextInput placeholder="E-mail" style={css.input} value={email} onChangeText={setEmail}/>
+                    <TextInput placeholder="Endereço" style={css.input} value={endereco} onChangeText={setEndereco}/>
+                    <TextInput placeholder="CEP" style={[css.input, {width: '60%'}]} value={cep} onChangeText={setCep}/>
+                    <TextInput placeholder="Senha" style={css.input} value={senha} onChangeText={setSenha}/>
+                    <TouchableOpacity style={css.entrar} onPress={() => cadastrar()}>
                         <Text style={css.botao}>Entrar</Text>
                     </TouchableOpacity>
                 </ScrollView>

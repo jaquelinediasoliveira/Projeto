@@ -6,19 +6,28 @@ import Navbar from '../components/navbar'
 
 import css from './style';
 import global from '../global/style'
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export default function Reservas({ navigation }) {
     const url = "http://10.87.202.133:8080/locacao/reservas";
     const [listaReservas, setListaReserva] = useState([]);
 
     useEffect(() => {
-        fetch(url)
+        loadReserva();
+    }, []);
+
+    const loadReserva = async () => {
+        let data = JSON.parse(await AsyncStorage.getItem('cliente'));
+
+        if(data != null) {
+            fetch(`${url}?id_cliente=${data.id_cliente}`)
             .then((resp) => { return resp.json() })
             .then(data => {
                 setListaReserva(data);
             })
             .catch(err => { console.log(err) });
-    }, []);
+        }
+    }
 
     const formatDate = (nasc) => {
         let dia = nasc.getDate();

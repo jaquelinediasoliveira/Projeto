@@ -2,6 +2,8 @@ import React from 'react'
 
 import {View} from 'react-native'
 
+import { CommonActions } from '@react-navigation/native';
+
 import css from "./style"
 import { AntDesign } from '@expo/vector-icons'; 
 
@@ -9,7 +11,19 @@ export default function Navbar(props){
     const { navigation, screen } = props;
 
     const handleNavigate = (tela) => {
-        navigation.navigate(tela);
+        navigation.push(tela);
+
+        // navigation.dispatch(state => {
+        //     // Remove the home route from the stack
+        //     const routes = state.routes.filter(r => r.name !== tela);
+          
+        //     return CommonActions.reset({
+        //       ...state,
+        //       routes,
+        //       index: routes.length - 1,
+        //     });
+        // });
+        // navigation.navigate(tela);
      }
 
      return(

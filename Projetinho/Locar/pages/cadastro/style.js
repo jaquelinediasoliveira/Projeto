@@ -20,29 +20,7 @@ export default StyleSheet.create({
         borderWidth: 1,
         borderColor: '#9932CC',
         borderRadius: 5,
-        padding: 10,
-    },
-    end: {
-        width: '100%',
-        flexDirection: 'row',
-        justifyContent: 'space-between'
-    },
-    city: {
-        width: '72%',
-        height: 50,
-        marginTop: '2%',
-        borderWidth: 1,
-        borderColor: '#9932CC',
-        borderRadius: 5,
-        padding: 10,
-    },
-    uf: {
-        width: '25%',
-        height: 50,
-        marginTop: '2%',
-        borderWidth: 1,
-        borderColor: '#9932CC',
-        borderRadius: 5,
+        padding: 10
     },
     entrar: {
         borderRadius: 15,
