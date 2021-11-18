@@ -22,10 +22,50 @@ export default function Home({ navigation }) {
    const [show, setShow] = useState(false);
    const [tipo, setTipo] = useState(0);
    const [selecionado, setSelecionado] = useState(-1);
+   const [carros, setCarros] = useState([]);
 
    useEffect(() => {
       getLogado();
-   }, [])
+      listarCarros();
+   }, []);
+
+   const listarCarros = () => {
+      const url = "http://10.87.202.133:8080/locacao/veiculos?busca=DISPONIVEL";
+      fetch(url)
+            .then((resp) => { return resp.json() })
+            .then(data => {
+                setCarros(data);
+            })
+            .catch(err => { console.log(err) });
+   }
+   
+   // const icons = [
+   //    {
+   //       'icon': '<FontAwesome name="car" size={24} color="black" />'
+   //    },
+   //    {
+
+   //    },
+   //    {
+
+   //    },
+   //    {
+
+   //    },
+   //    {
+
+   //    },
+   //    {
+
+   //    },
+   //    {
+
+   //    },
+   //    {
+
+   //    }
+
+   // ]
 
    const getLogado = async () => {
       const value = await AsyncStorage.getItem('cliente');
@@ -36,29 +76,6 @@ export default function Home({ navigation }) {
    let [fontsLoaded] = useFonts({
       Roboto_300Light,
    })
-
-   const carros = [
-      {
-         "img":require('../assets/carro.jpg'),
-         "texto":"Marca"
-      },
-      {
-         "img":require('../assets/carro.jpg'),
-         "texto":"carro"
-      },
-      {
-         "img":require('../assets/carro.jpg'),
-         "texto":"carro"
-      },
-      {
-         "img":require('../assets/carro.jpg'),
-         "texto":"carro"
-      },
-      {
-         "img":require('../assets/carro.jpg'),
-         "texto":"carro"
-      }
-   ]
 
    const setData = (event, selectedDate) => {
       let pode = false;
@@ -95,6 +112,17 @@ export default function Home({ navigation }) {
       return `${dia}/${mes}/${ano}`;
    }
 
+   const confirmar = () => {
+      let body = {
+         "id_cliente": "",
+         "veiculo": carros[selecionado].placa,
+         "id_loja": 1,
+         "tipo": carros[selecionado].id_tipo,
+         "data_retirada":date,
+         "data_devolucao":dateDev
+      }
+   }
+
    if (!fontsLoaded) {
       return <AppLoading />;
    } else {
@@ -125,11 +153,23 @@ export default function Home({ navigation }) {
                            carros.map((car, index) => {
                               return(
                                  <View style={[css.card, (selecionado == index) ? { borderColor : '#91DE25'} : {}]} key={index}>
-                                    <Image source={car.img} style={css.imagem}/>
-                                    <Text>{car.texto}</Text>
-                                    <Text>{car.texto}</Text>
-                                    <Text>{car.texto}</Text>
-                                    <Text style={css.texto}>Carro</Text>
+                                    <Image source={require('../assets/carro.jpg')} style={css.imagem}/>
+                                    <View style={{flexDirection: 'row', marginBottom: 15, marginLeft: 15, marginRight: 15}}>
+                                       <View style={{marginRight: 15}}>
+                                          <Text style={{fontWeight: 'bold', marginBottom: 5}}>Marca: </Text>
+                                          <Text style={{fontWeight: 'bold', marginBottom: 5}}>Modelo: </Text>
+                                          <Text style={{fontWeight: 'bold', marginBottom: 5}}>Cor: </Text>
+                                          <Text style={{fontWeight: 'bold', marginBottom: 5}}>Placa: </Text>
+                                          <Text style={{fontWeight: 'bold'}}>Preço: </Text>
+                                       </View>
+                                       <View>
+                                          <Text style={{marginBottom: 5}}>{car.marca}</Text>
+                                          <Text style={{marginBottom: 5}}>{car.modelo}</Text>
+                                          <Text style={{marginBottom: 5}}>{car.cor}</Text>
+                                          <Text style={{marginBottom: 5}}>{car.placa}</Text>
+                                          <Text>R${car.preco}</Text>
+                                       </View>
+                                    </View>
                                     <TouchableOpacity style={[css.botao, (selecionado == index) ? {backgroundColor: '#E0EBD0', borderColor : '#91DE25'} : {}]} onPress={() => {
                                        setSelecionado(index);
                                     }} >
@@ -146,7 +186,7 @@ export default function Home({ navigation }) {
                         <View>
                            <Text style={[global.question, {alignSelf: 'center', marginTop: -5}]}>Confirmar aluguel?</Text>
                            <View style={{width: 411, height: 150, flexDirection: 'row', justifyContent: 'space-evenly'}}>
-                              <TouchableOpacity style={[css.botao, {width: 130, height: 50}]}>
+                              <TouchableOpacity style={[css.botao, {width: 130, height: 50}]} onPress={() => confirmar()}>
                                  <Text style={{fontSize: 18}}>Confirmar</Text>
                               </TouchableOpacity>
                               <TouchableOpacity style={[css.botao, {width: 130, height: 50}]} onPress={() => {

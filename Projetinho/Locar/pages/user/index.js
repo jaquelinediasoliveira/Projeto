@@ -49,7 +49,6 @@ export default function Perfil({navigation}) {
                 }
             })
             .catch(err => { console.log(err) });
-        
     }
 
     return (

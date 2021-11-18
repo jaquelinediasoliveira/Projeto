@@ -67,14 +67,13 @@ export default StyleSheet.create({
         height: '100%'  
     },
     card: {
-        width: 200,
         alignItems: 'center',
         justifyContent: 'space-between',
         borderWidth: 2,
         borderColor: '#9932CC',
         borderRadius: 10,
-        marginTop: 5,
-        marginBottom: 13, 
+        marginTop: 15,
+        marginBottom: 23, 
         shadowColor: "#000",
         shadowOffset: {width: 0, height: 2},
         shadowOpacity: 0.25,
@@ -87,9 +86,9 @@ export default StyleSheet.create({
     },
     imagem:{
         width: '100%',
-        resizeMode: "contain",
-        marginTop: -262,
-        marginBottom: -250,
+        height: 140,
+        resizeMode:"cover",
+        marginBottom: 5,
         borderTopLeftRadius: 12,
         borderTopRightRadius: 12
     },
@@ -99,8 +98,8 @@ export default StyleSheet.create({
     botao:{
         borderRadius: 15,
         backgroundColor: '#F7EFFA',
-        width: '45%',
-        height: '12%',
+        width: 90,
+        height: 40,
         justifyContent: 'center',
         alignItems: 'center',
         marginBottom: 10

@@ -15,29 +15,40 @@ export default function Reservas({navigation}){
     const [cep, setCep] = useState("");
     const [senha, setSenha] = useState("");
 
+    const formataData = (data) => {
+        let arr = data.split("/");
+        return `${arr[2]}-${arr[1]}-${arr[0]}`;
+    }
+
+
     const cadastrar = () => {
-        fetch(`${url}?id_cliente=${data.id_cliente}`, {
-            method: "post",
-            body: {
-                cpf: cpf,
-                passaporte: passaporte,
-                nome_completo: nomeCompleto,
-                telefone: telefone,
-                data_nascimento: nascimento,
-                email: email,
-                endereco: endereco,
-                cep: cep,
-                senha: senha,
-                tipo_usuario: false,
-                logOn: false
-            }
+        const body =
+        {
+            cpf: cpf,
+            passaporte: passaporte,
+            nome_completo: nomeCompleto,
+            telefone: telefone,
+            data_nascimento: formataData(nascimento),
+            email: email,
+            endereco: endereco,
+            cep: cep,
+            senha: senha,
+            tipo_usuario: false,
+            logOn: false
+        }
+
+        fetch(url, {
+            method: "POST",
+            headers: {'Accept':'application/json, text/plain, */*',
+            'Content-Type':'application/json'},
+            body: JSON.stringify(body)            
         })
         .then((resp) => { return resp.json() })
         .then(data => {
-            setListaReserva(data);
+            // setListaReserva(data);
+            console.log(data);
         })
         .catch(err => { console.log(err) });
-
     }
 
     return(
@@ -57,7 +68,7 @@ export default function Reservas({navigation}){
                     <TextInput placeholder="CEP" style={[css.input, {width: '60%'}]} value={cep} onChangeText={setCep}/>
                     <TextInput placeholder="Senha" style={css.input} value={senha} onChangeText={setSenha}/>
                     <TouchableOpacity style={css.entrar} onPress={() => cadastrar()}>
-                        <Text style={css.botao}>Entrar</Text>
+                        <Text>Entrar</Text>
                     </TouchableOpacity>
                 </ScrollView>
             </View>
