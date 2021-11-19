@@ -130,14 +130,20 @@ public class Cliente {
 		JSONObject json = new JSONObject();
 		
 		try {
-			json.put("id_cliente", id_cliente);
-			json.put("cpf", cpf);
-			json.put("passaporte", passaporte);
-			json.put("nome_completo", nome_completo);
-			json.put("cep", cep);
-			json.put("data_nascimento", data_nascimento);
-			json.put("telefone", telefone);
-			json.put("endereco", endereco);
+			
+			if(cpf == null) {
+				json.put("nome_completo", nome_completo);
+			}else {
+				json.put("id_cliente", id_cliente);
+				json.put("cpf", cpf);
+				json.put("passaporte", passaporte);
+				json.put("nome_completo", nome_completo);
+				json.put("cep", cep);
+				json.put("data_nascimento", data_nascimento);
+				json.put("telefone", telefone);
+				json.put("endereco", endereco);
+				
+			}
 			
 		} catch (JSONException e) {
 			System.out.println("Erro ao converter JSON: " + e);

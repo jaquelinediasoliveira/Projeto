@@ -66,6 +66,7 @@ public class Clientes extends HttpServlet {
 		resp.setContentType("application/json"); 
 		resp.setCharacterEncoding("utf-8");
 	 
+	
 	 	//A vaiável body recebe o corpo da requisição 
 	 	String body = req.getReader().lines().collect(Collectors.joining(System.lineSeparator()));
 	
@@ -119,12 +120,56 @@ public class Clientes extends HttpServlet {
 		  usuario.setSenha(senha);
 		  usuario.setTipo(tipo_usuario);
 		  usuario.setLogOn(logOn);
+		  
+		  
+		  boolean b =  clienteDAO.cadastrarCliente(cliente,usuario);
+		  
+		  
+	  		if(b == true) {
+	  			
+	  			
+	  			try {
+	  				
+	  				JSONArray ja;
+	  				
+					ja = clienteDAO.consulClienteCPF(cpf);
+					
+					PrintWriter imprimir = resp.getWriter();
+		  			 
+		  	        imprimir.println(ja.get(0));
+		  	        
+		  	        
+					
+				} catch (ParseException e) {
+				
+					e.printStackTrace();
+				}
+	  			
+	  			
+	  			
+	  			
+	  		}
+	  		
+	  		else {
+	  			
+	  			JSONObject jo = new JSONObject();
+	  			
+	  			jo.put("id_cliente", 0);
+  				
+				PrintWriter imprimir = resp.getWriter();
+	  			 
+	  	        imprimir.println(jo.toString());
+	  	        
+	  		}
 	 
-		  clienteDAO.cadastrarCliente(cliente,usuario);
+		  //clienteDAO.cadastrarCliente(cliente,usuario);
 	 
 	  		} catch (JSONException e) {
 	  			e.printStackTrace(); 
 	  		}
+	  
+	  		
+	  
 	  
 	 }
 

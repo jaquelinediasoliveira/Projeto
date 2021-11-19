@@ -36,9 +36,13 @@ public class Reservas extends HttpServlet{
 		
 		ReservaDAO reservaDAO = new ReservaDAO();
 		
+		String id_cliente = req.getParameter("id_cliente");
+	
+	
+		
 		try {
 			
-			ja = reservaDAO.consultarReserva();
+			ja = reservaDAO.consultarReserva(id_cliente);
 			
 			
 			pw.write(ja.toString());
@@ -97,7 +101,40 @@ public class Reservas extends HttpServlet{
 			
 			ReservaDAO reservaDAO = new ReservaDAO();
 			
-			reservaDAO.cadastrarReserva(reserva);
+			boolean b = reservaDAO.cadastrarReserva(reserva);
+			
+			
+			
+			JSONArray ja = new JSONArray();
+			
+				
+			try {
+				
+				
+				if(b == true) {
+					
+					ja = reservaDAO.consultarReserva(String.valueOf(reserva.getId_cliente()));
+					
+					PrintWriter imprimir = resp.getWriter();
+		  			 
+		  	        imprimir.println(ja.get(0));
+				}
+			
+				else {
+					PrintWriter imprimir = resp.getWriter();
+		  			 
+		  	        imprimir.println("Veículo não disponível");
+				}
+				
+				
+				
+				
+			} catch (ParseException e) {
+				
+				
+				e.printStackTrace();
+			}
+			
 			
 			
 		} catch (JSONException e) {

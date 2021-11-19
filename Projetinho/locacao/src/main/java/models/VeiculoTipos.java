@@ -3,30 +3,24 @@ package models;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class Veiculo {
-
+public class VeiculoTipos {
+	
+	
+	
 	private String placa;
-	private int id_tipo;
 	private String marca;
 	private String modelo;
 	private String cor;
 	private float preco;
 	private String status_loc;
+	private String tipo;
 	
-	public Veiculo() {
+	
+	
+	public VeiculoTipos() {
 		
 	}
-
-
-	public Veiculo(String placa, int id_tipo, String marca, String modelo, String cor, float preco, String status_loc) {
-		this.placa = placa;
-		this.id_tipo = id_tipo;
-		this.marca = marca;
-		this.modelo = modelo;
-		this.cor = cor;
-		this.preco = preco;
-		this.status_loc = status_loc;
-	}
+	
 	
 	
 	public String getPlaca() {
@@ -34,14 +28,6 @@ public class Veiculo {
 	}
 	public void setPlaca(String placa) {
 		this.placa = placa;
-	}
-	
-	public int getId_tipo() {
-		return id_tipo;
-	}
-	
-	public void setId_tipo(int id_tipo) {
-		this.id_tipo = id_tipo;
 	}
 	public String getMarca() {
 		return marca;
@@ -61,42 +47,37 @@ public class Veiculo {
 	public void setCor(String cor) {
 		this.cor = cor;
 	}
-	
 	public float getPreco() {
-		return this.preco;	
+		return preco;
 	}
-	
 	public void setPreco(float preco) {
 		this.preco = preco;
 	}
-	
 	public String getStatus_loc() {
-		return this.status_loc;
+		return status_loc;
 	}
-	
 	public void setStatus_loc(String status_loc) {
 		this.status_loc = status_loc;
 	}
-
-
-	@Override
-	public String toString() {
-		return placa + "	|	" + id_tipo + "		|	 " + marca + "	|	" + modelo + "		|	" + cor + " 	|	" + preco + "	|	" + status_loc + "\r\t";
+	public String getTipo() {
+		return tipo;
+	}
+	public void setTipo(String tipo) {
+		this.tipo = tipo;
 	}
 	
-	
-	public JSONObject toJSON() {
+public JSONObject toJSON() {
 		
 		JSONObject json = new JSONObject();
 		
 		try {
 			json.put("placa", placa);
-			json.put("id_tipo", id_tipo);
 			json.put("marca", marca);
 			json.put("modelo", modelo);
 			json.put("cor", cor);
 			json.put("preco", preco);
 			json.put("status_loc", status_loc);
+			json.put("tipo", tipo);
 			
 		} catch (JSONException e) {
 			System.out.println("Erro ao converter JSON: " + e);
@@ -107,5 +88,5 @@ public class Veiculo {
 		
 	}
 	
-	
+
 }

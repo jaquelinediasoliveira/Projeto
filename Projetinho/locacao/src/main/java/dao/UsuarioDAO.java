@@ -4,8 +4,12 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.ParseException;
 
 import org.json.JSONArray;
+
+import models.Cliente;
+import models.ConsultaBD;
 import models.Usuario;
 
 public class UsuarioDAO {
@@ -14,7 +18,9 @@ public class UsuarioDAO {
 	
 	Connection conn;
 	PreparedStatement ps;
+	PreparedStatement ps2;
 	ResultSet rs;
+	ResultSet rs2;
 	JSONArray ja = new JSONArray();
 	
 	
@@ -22,40 +28,75 @@ public class UsuarioDAO {
 	
 	/* ************************************ Consultar todos os usuários ****************************************************************** */
 	
-	public JSONArray consultarUsuario() {
+	public JSONArray consultarUsuario(String email, String senha) {
 		
 		conn = new ConexaoBD().conectaBD();
 		
 		String sql = "select * from usuarios;";
-		String clienteQuery = "select * from usuarios where id_cliente = ?;";
-		String funcionarioQuery = "select * from usuarios where id_funcionario = ?;";
-		
-		
+		String busca = "select c.nome_completo, c.id_cliente, c.cpf, c.passaporte, c.telefone, c.cep, c.endereco, c.data_nascimento from clientes c inner join usuarios u ON c.id_cliente = u.id_cliente where u.email = ? and u.senha = ?;";
+			
 		
 		try {
 			
-			ps = conn.prepareStatement(sql);
 			
-			rs = ps.executeQuery();
-			
-			
-			while(rs.next()) {
+			if(email == null || senha == null) {
 				
-				Usuario usuario = new Usuario();
+				ps = conn.prepareStatement(sql);
 				
-				usuario.setId_usuario(rs.getInt("id_usuario"));
-				usuario.setId_cliente(rs.getInt("id_cliente"));
-				usuario.setId_funcionario(rs.getInt("id_funcionario"));
-				usuario.setEmail(rs.getString("email"));
-				usuario.setSenha(rs.getString("senha"));
-				usuario.setTipo(rs.getBoolean("tipo_usuario"));
-				usuario.setLogOn(rs.getBoolean("logOn"));
+				rs = ps.executeQuery();
 				
-				ja.put(usuario.toJSON());
+				
+				while(rs.next()) {
+					
+					Usuario usuario = new Usuario();
+					
+					usuario.setId_usuario(rs.getInt("id_usuario"));
+					usuario.setId_cliente(rs.getInt("id_cliente"));
+					usuario.setId_funcionario(rs.getInt("id_funcionario"));
+					usuario.setEmail(rs.getString("email"));
+					usuario.setSenha(rs.getString("senha"));
+					usuario.setTipo(rs.getBoolean("tipo_usuario"));
+					usuario.setLogOn(rs.getBoolean("logOn"));
+					
+					ja.put(usuario.toJSON());
+					
+				}
+				
 				
 			}
 			
-			ps.close();
+			else {
+				
+				ps = conn.prepareStatement(busca);
+				ps.setString(1, email);
+				ps.setString(2, senha);
+				
+				rs = ps.executeQuery();
+				
+				
+				
+				while(rs.next()) {
+					
+					ConsultaBD consulta = new ConsultaBD();
+					
+					consulta.setId_cliente(rs.getInt("id_cliente"));
+					consulta.setNome_completo(rs.getString("nome_completo"));
+					consulta.setCpf(rs.getString("cpf"));
+					consulta.setPassaporte(rs.getString("passaporte"));
+					consulta.setTelefone(rs.getString("telefone"));
+					consulta.setCep(rs.getString("cep"));
+					consulta.setEndereco(rs.getString("endereco"));
+					consulta.setData_nascimento(rs.getDate("data_nascimento"));
+					
+					ja.put(consulta.toJSON());
+				}
+				
+				ps.close();
+				
+				
+			}
+			
+			
 			
 		} catch (SQLException e) {
 			System.out.println("(UsuarioDAO/Consultar: Erro na consulta - )" + e);
@@ -76,7 +117,7 @@ public class UsuarioDAO {
 /* ******************************************************************** Cadastrar Usuário ********************************************************************************************** */	
 	
 	
-	public void cadastrarUsuario(Usuario usuario) {
+	public boolean cadastrarUsuario(Usuario usuario) {
 		
 		
 		conn = new ConexaoBD().conectaBD();
@@ -96,10 +137,13 @@ public class UsuarioDAO {
 			ps.execute();
 			ps.close();
 			
+			return true;
+			
 		} catch (SQLException e) {
 			
 			e.printStackTrace();
 			
+			return false;
 		}
 		
 		

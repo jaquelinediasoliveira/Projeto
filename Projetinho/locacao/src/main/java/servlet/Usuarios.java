@@ -26,13 +26,22 @@ public class Usuarios extends HttpServlet{
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
+		
+		
+		String email = req.getParameter("email"); 
+		String senha = req.getParameter("senha");
+		
+		
+		
+		
+		
 		JSONArray ja = new JSONArray();
 		
 		PrintWriter pw = resp.getWriter();
 		
 		UsuarioDAO usuarioDAO = new UsuarioDAO();
 		
-		ja = usuarioDAO.consultarUsuario();
+		ja = usuarioDAO.consultarUsuario(email, senha);
 		
 		pw.write(ja.toString());
 		

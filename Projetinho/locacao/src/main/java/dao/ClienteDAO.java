@@ -21,11 +21,13 @@ public class ClienteDAO {
 	ResultSet rs;
 	JSONArray ja = new JSONArray();
 	
-	public void cadastrarCliente(Cliente cliente, Usuario usuario) {
+	public boolean cadastrarCliente(Cliente cliente, Usuario usuario) {
 		String sql = "insert into clientes (cpf, passaporte, nome_completo, cep, data_nascimento, telefone, endereco) values (?,?,?,?,?,?,?)"
 				+ " ON DUPLICATE KEY UPDATE nome_completo = ?, cep = ?, data_nascimento = ?, telefone = ?, endereco = ?;";
 		
 		String cpf = cliente.getCpf();
+		
+		boolean u = true;
 		
 		conn = new ConexaoBD().conectaBD();
 		
@@ -72,7 +74,8 @@ public class ClienteDAO {
 				UsuarioDAO usuarioDAO = new UsuarioDAO();
 				
 				//usuarioDAO.deletarUsuarioIDCLIENTE(id_cliente);
-				usuarioDAO.cadastrarUsuario(usuario);
+				u = usuarioDAO.cadastrarUsuario(usuario);
+				
 				
 			} catch (JSONException e) {
 				
@@ -81,14 +84,18 @@ public class ClienteDAO {
 				e.printStackTrace();
 			}
 			
+			
+			
 		} catch (ParseException e) {
 			
 			e.printStackTrace();
+			
+			return false;
 		}
 		
 		
 		
-		
+		return u;
 	}
 	
 	

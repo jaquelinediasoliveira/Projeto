@@ -109,21 +109,6 @@ public class Reserva {
 	
 /* *************************************************************************************************************** */ 
 	
-	/*public String getDataDevolucao() {
-		
-		Calendar c = Calendar.getInstance();
-		
-		c.setTime(this.data_devolucao);
-		
-		String dia = String.valueOf(c.get(Calendar.DAY_OF_MONTH));
-		String mes = String.valueOf(c.get(Calendar.MONTH) + 1);
-		String ano = String.valueOf(c.get(Calendar.YEAR));
-		String horas = String.valueOf(c.get(Calendar.HOUR_OF_DAY));
-		String minutos = String.valueOf(c.get(Calendar.MINUTE));
-		
-		return ano + '-' + mes + '-' + dia + " " + horas + ":" + minutos;
-	}
-	*/
 	public Date getData_devolucao_esperada() {
 		return data_devolucao_esperada;
 	}

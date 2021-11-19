@@ -119,17 +119,24 @@ public class Usuario {
 		
 		JSONObject json = new JSONObject();
 		
+		
 		try {
 			
-			json.put("id_usuario", id_usuario);
-			json.put("id_cliente", id_cliente);
-			json.put("id_funcionario", id_funcionario);
-			json.put("cpf", cpf);
-			json.put("passaporte", passaporte);
-			json.put("email", email);
-			json.put("senha", senha);
-			json.put("tipo", tipo);
-			json.put("logOn", logOn);
+			
+			
+
+				
+				json.put("id_usuario", id_usuario);
+				json.put("id_cliente", id_cliente);
+				json.put("id_funcionario", id_funcionario);
+				json.put("cpf", cpf);
+				json.put("passaporte", passaporte);
+				json.put("email", email);
+				json.put("senha", senha);
+				json.put("tipo", tipo);
+				json.put("logOn", logOn);
+			
+			
 			
 		} catch (JSONException e) {
 			
