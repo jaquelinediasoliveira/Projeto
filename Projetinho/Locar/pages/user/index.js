@@ -39,16 +39,16 @@ export default function Perfil({navigation}) {
 
     const login = () => {
         fetch(`${url}?email=${email}&senha=${senha}`)
-            .then((resp) => { return resp.json() })
-            .then(data => {
-                if (data.length > 0){
-                    AsyncStorage.setItem("cliente", JSON.stringify(data[0]));
+        .then((resp) => { return resp.json() })
+        .then(data => {
+            if (data.length > 0){
+                AsyncStorage.setItem("cliente", JSON.stringify(data[0]));
                     setListaCliente(data);
                 }else{
                     setAlerta("E-mail ou senha inválidos !");
                 }
             })
-            .catch(err => { console.log(err) });
+        .catch(err => { console.log(err) });
     }
 
     return (

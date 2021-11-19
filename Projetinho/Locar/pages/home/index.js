@@ -2,7 +2,7 @@ import React, { Component, useState, useEffect } from 'react';
 
 import { View, Text, Image, TextInput, TouchableOpacity, ToastAndroid, ScrollView } from 'react-native'
 import DateTimePicker from '@react-native-community/datetimepicker';
-import { AntDesign, Entypo } from '@expo/vector-icons';
+import { AntDesign, Entypo, MaterialCommunityIcons } from '@expo/vector-icons';
 
 import AppLoading from 'expo-app-loading';
 import AsyncStorage from '@react-native-async-storage/async-storage';
@@ -23,6 +23,7 @@ export default function Home({ navigation }) {
    const [tipo, setTipo] = useState(0);
    const [selecionado, setSelecionado] = useState(-1);
    const [carros, setCarros] = useState([]);
+   const [idCliente, setIdCliente] = useState(0);
 
    useEffect(() => {
       getLogado();
@@ -39,38 +40,14 @@ export default function Home({ navigation }) {
             .catch(err => { console.log(err) });
    }
    
-   // const icons = [
-   //    {
-   //       'icon': '<FontAwesome name="car" size={24} color="black" />'
-   //    },
-   //    {
-
-   //    },
-   //    {
-
-   //    },
-   //    {
-
-   //    },
-   //    {
-
-   //    },
-   //    {
-
-   //    },
-   //    {
-
-   //    },
-   //    {
-
-   //    }
-
-   // ]
-
    const getLogado = async () => {
       const value = await AsyncStorage.getItem('cliente');
       if(value === null) setLogado(false)
-      else setLogado(true);
+      else { 
+         let idCli = JSON.parse(value).id_cliente;
+         setIdCliente(idCli);
+         setLogado(true);
+      }
    }
 
    let [fontsLoaded] = useFonts({
@@ -103,24 +80,42 @@ export default function Home({ navigation }) {
       setShow(false);
    }
 
-   const formatDate = (data) => {
+   const formatDate = (data, tipo) => {
       let dia = data.getDate();
       dia = (dia < 10) ? "0" + dia : dia;
       let mes = data.getMonth() + 1;
       mes = (mes < 10) ? "0" + mes : mes;
       let ano = data.getFullYear();
-      return `${dia}/${mes}/${ano}`;
+      let hora = data.getHours();
+      let minutos = data.getMinutes();
+      if(tipo == 1) return `${dia}/${mes}/${ano}`;
+      else return `${ano}-${mes}-${dia} ${hora}:${minutos}`; 
    }
 
    const confirmar = () => {
-      let body = {
-         "id_cliente": "",
+      const body = {
+         "id_cliente": idCliente,
          "veiculo": carros[selecionado].placa,
          "id_loja": 1,
-         "tipo": carros[selecionado].id_tipo,
-         "data_retirada":date,
-         "data_devolucao":dateDev
+         "id_tipo": carros[selecionado].id_tipo,
+         "data_retirada":formatDate(date,2),
+         "data_devolucao_esperada":formatDate(dateDev,2)
       }
+
+      console.log(body);
+
+      const url = 'http://10.87.202.133:8080/locacao/reservas';
+
+      fetch(url, {
+         method: "POST",
+         headers: {'Accept':'application/json', 'Content-Type':'application/json'},
+         body: JSON.stringify(body)
+     })
+     .then((resp) => { return resp.json() }) 
+     .then(data => {
+         console.log(data);
+     })
+     .catch(err => { console.log(err) });
    }
 
    if (!fontsLoaded) {
@@ -140,11 +135,11 @@ export default function Home({ navigation }) {
                   </View>
                   <TouchableOpacity style={css.data} onPress={() => { setTipo(0); setShow(true) }}>
                      <AntDesign name="calendar" size={24} color="purple" />
-                     <Text style={{ marginLeft: "4%", fontFamily: "Roboto_300Light" }}>{formatDate(date)}</Text>
+                     <Text style={{ marginLeft: "4%", fontFamily: "Roboto_300Light" }}>{formatDate(date, 1)}</Text>
                   </TouchableOpacity>
                   <TouchableOpacity style={css.data} onPress={() => { setTipo(1); setShow(true) }}>
                      <AntDesign name="calendar" size={24} color="purple" />
-                     <Text style={{ marginLeft: "4%", fontFamily: "Roboto_300Light" }}>{formatDate(dateDev)}</Text>
+                     <Text style={{ marginLeft: "4%", fontFamily: "Roboto_300Light" }}>{formatDate(dateDev, 1)}</Text>
                   </TouchableOpacity>
                   <Text style={[global.question, {alignSelf: 'center', marginBottom: -1}]}>Veículos disponíveis</Text>
                   <View style={{width: 410}}>
@@ -153,8 +148,8 @@ export default function Home({ navigation }) {
                            carros.map((car, index) => {
                               return(
                                  <View style={[css.card, (selecionado == index) ? { borderColor : '#91DE25'} : {}]} key={index}>
-                                    <Image source={require('../assets/carro.jpg')} style={css.imagem}/>
-                                    <View style={{flexDirection: 'row', marginBottom: 15, marginLeft: 15, marginRight: 15}}>
+                                    <MaterialCommunityIcons name="image-off-outline" size={45} color="black" style={{marginTop: 10}}/>
+                                    <View style={{flexDirection: 'row', marginBottom: 15, marginLeft: 15, marginRight: 15, marginTop: 10}}>
                                        <View style={{marginRight: 15}}>
                                           <Text style={{fontWeight: 'bold', marginBottom: 5}}>Marca: </Text>
                                           <Text style={{fontWeight: 'bold', marginBottom: 5}}>Modelo: </Text>
