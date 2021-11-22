@@ -20,7 +20,7 @@ public class VeiculoDAO {
 		
 		
 		
-		String sql = "insert into veiculos (placa, id_tipo, marca, modelo, cor, preco, status_loc) values(?,?,?,?,?,?,?);";
+		String sql = "insert into veiculos (placa, id_tipo, marca, modelo, cor, preco, status_loc, imagem) values(?,?,?,?,?,?,?,?);";
 		
 		conn = new ConexaoBD().conectaBD();
 		
@@ -35,6 +35,7 @@ public class VeiculoDAO {
 			ps.setString(5, veiculo.getCor());
 			ps.setFloat(6, veiculo.getPreco());
 			ps.setString(7, veiculo.getStatus_loc());
+			ps.setString(8, veiculo.getImagem());
 			
 			ps.execute();
 			ps.close();
@@ -170,7 +171,7 @@ public class VeiculoDAO {
 	
 	public void alterarVeiculo(Veiculo veiculo) {
 		
-		String sql = "update veiculos set placa = ?, cor = ?, preco = ?, status_loc = ? where placa = ?;";
+		String sql = "update veiculos set placa = ?, cor = ?, preco = ?, status_loc = ?, imagem = ? where placa = ?;";
 		
 		
 		conn = new ConexaoBD().conectaBD();
@@ -184,7 +185,8 @@ public class VeiculoDAO {
 			ps.setString(2, veiculo.getCor());
 			ps.setFloat(3, veiculo.getPreco());
 			ps.setString(4, veiculo.getStatus_loc());
-			ps.setString(5, veiculo.getPlaca());
+			ps.setString(5, veiculo.getImagem());
+			ps.setString(6, veiculo.getPlaca());
 			
 			ps.execute();
 			

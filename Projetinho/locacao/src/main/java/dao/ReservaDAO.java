@@ -144,9 +144,11 @@ public class ReservaDAO {
 	
 	public JSONArray consultarReserva(String id_cliente) throws ParseException {
 		
-		String sql = "select * from reservas;";
+		String sql = "SELECT reservas.*, veiculos.preco, veiculos.imagem FROM reservas\r\n"
+				+ "INNER JOIN veiculos ON reservas.veiculo = veiculos.placa;";
 		
-		String busca = "select * from reservas where id_cliente = ?;";
+		String busca = "SELECT reservas.*, veiculos.preco, veiculos.imagem FROM reservas\r\n"
+				+ "INNER JOIN veiculos ON reservas.veiculo = veiculos.placa where id_cliente = ?;";
 		
 		String id = String.valueOf(id_cliente);
 		
@@ -170,7 +172,7 @@ public class ReservaDAO {
 					Reserva reserva = new Reserva();
 					
 					
-					if(rs.getString("data_devolucao_esperada") != null) {
+					if(rs.getString("data_devolucao_esperada") != null && rs.getString("data_devolucao_final") == null) {
 						
 						reserva.setId_cliente(rs.getInt("id_cliente"));
 						reserva.setVeiculo(rs.getString("veiculo"));
@@ -178,10 +180,30 @@ public class ReservaDAO {
 						reserva.setId_loja(rs.getInt("id_loja"));
 						reserva.setData_ret(rs.getString("data_retirada"));
 						reserva.setData_devolucao_esperada(rs.getString("data_devolucao_esperada"));
+						reserva.setValor(rs.getDouble("preco"));
+						reserva.setImagem(rs.getString("imagem"));
 						
 						json.put(reserva.toJSON());
 						
 					}
+					
+					else if(rs.getString("data_devolucao_esperada") != null && rs.getString("data_devolucao_final") != null) {
+						
+						reserva.setId_cliente(rs.getInt("id_cliente"));
+						reserva.setVeiculo(rs.getString("veiculo"));
+						reserva.setId_tipo(rs.getInt("id_tipo"));
+						reserva.setId_loja(rs.getInt("id_loja"));
+						reserva.setData_ret(rs.getString("data_retirada"));
+						reserva.setData_devolucao_esperada(rs.getString("data_devolucao_esperada"));
+						reserva.setData_devolucao_final(rs.getString("data_devolucao_final"));
+						reserva.setValor(rs.getDouble("preco"));
+						reserva.setImagem(rs.getString("imagem"));
+						
+						json.put(reserva.toJSON());
+						
+					}
+					
+					
 					
 					else {
 						
@@ -190,6 +212,8 @@ public class ReservaDAO {
 						reserva.setId_tipo(rs.getInt("id_tipo"));
 						reserva.setId_loja(rs.getInt("id_loja"));
 						reserva.setData_ret(rs.getString("data_retirada"));
+						reserva.setValor(rs.getDouble("preco"));
+						reserva.setImagem(rs.getString("imagem"));
 						
 						json.put(reserva.toJSON());
 						
@@ -214,14 +238,51 @@ public class ReservaDAO {
 					Reserva reserva = new Reserva();
 					
 					
-					reserva.setId_cliente(rs.getInt("id_cliente"));
-					reserva.setVeiculo(rs.getString("veiculo"));
-					reserva.setId_tipo(rs.getInt("id_tipo"));
-					reserva.setId_loja(rs.getInt("id_loja"));
-					reserva.setData_ret(rs.getString("data_retirada"));
+					if(rs.getString("data_devolucao_esperada") != null && rs.getString("data_devolucao_final") == null) {
+						
+						reserva.setId_cliente(rs.getInt("id_cliente"));
+						reserva.setVeiculo(rs.getString("veiculo"));
+						reserva.setId_tipo(rs.getInt("id_tipo"));
+						reserva.setId_loja(rs.getInt("id_loja"));
+						reserva.setData_ret(rs.getString("data_retirada"));
+						reserva.setData_devolucao_esperada(rs.getString("data_devolucao_esperada"));
+						reserva.setValor(rs.getDouble("preco"));
+						reserva.setImagem(rs.getString("imagem"));
+						
+						json.put(reserva.toJSON());
+						
+					}
 					
-					json.put(reserva.toJSON());
+					else if(rs.getString("data_devolucao_esperada") != null && rs.getString("data_devolucao_final") != null) {
+						
+						reserva.setId_cliente(rs.getInt("id_cliente"));
+						reserva.setVeiculo(rs.getString("veiculo"));
+						reserva.setId_tipo(rs.getInt("id_tipo"));
+						reserva.setId_loja(rs.getInt("id_loja"));
+						reserva.setData_ret(rs.getString("data_retirada"));
+						reserva.setData_devolucao_esperada(rs.getString("data_devolucao_esperada"));
+						reserva.setData_devolucao_final(rs.getString("data_devolucao_final"));
+						reserva.setValor(rs.getDouble("preco"));
+						reserva.setImagem(rs.getString("imagem"));
+						
+						json.put(reserva.toJSON());
+						
+					}
 					
+					else {
+						
+						reserva.setId_cliente(rs.getInt("id_cliente"));
+						reserva.setVeiculo(rs.getString("veiculo"));
+						reserva.setId_tipo(rs.getInt("id_tipo"));
+						reserva.setId_loja(rs.getInt("id_loja"));
+						reserva.setData_ret(rs.getString("data_retirada"));
+						reserva.setValor(rs.getDouble("preco"));
+						reserva.setImagem(rs.getString("imagem"));
+						
+						json.put(reserva.toJSON());
+						
+					}
+				
 				}
 				
 			}

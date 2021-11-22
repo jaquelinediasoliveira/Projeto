@@ -71,6 +71,7 @@ public class Veiculos extends HttpServlet{
 			veiculo.setCor(jo.getString("cor"));
 			veiculo.setPreco(Float.parseFloat(jo.getString("preco")));
 			veiculo.setStatus_loc(jo.getString("status_loc"));
+			veiculo.setImagem(jo.getString("imagem"));
 			
 			VeiculoDAO veiculoDAO = new VeiculoDAO();
 			
@@ -116,6 +117,7 @@ public class Veiculos extends HttpServlet{
 			veiculo.setCor(jo.getString("cor"));
 			veiculo.setPreco(Float.parseFloat(jo.getString("preco")));
 			veiculo.setStatus_loc(jo.getString("status_loc"));
+			veiculo.setImagem(jo.getString("imagem"));
 			
 			veiculoDAO.alterarVeiculo(veiculo);
 			
