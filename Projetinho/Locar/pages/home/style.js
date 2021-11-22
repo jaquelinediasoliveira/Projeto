@@ -102,6 +102,6 @@ export default StyleSheet.create({
         height: 40,
         justifyContent: 'center',
         alignItems: 'center',
-        marginBottom: 10
+        marginBottom: 5
     }
 })

@@ -116,6 +116,13 @@ export default function Home({ navigation }) {
          console.log(data);
      })
      .catch(err => { console.log(err) });
+
+     ToastAndroid.show('Locação confirmada!', ToastAndroid.SHORT);
+
+      setLocal("");
+      setDate(new Date());
+      setDateDev(new Date());
+      setSelecionado(-1);
    }
 
    if (!fontsLoaded) {

@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, Image, ScrollView } from 'react-native'
-import { Entypo } from '@expo/vector-icons';
+import { View, Text, ScrollView } from 'react-native'
+import { Entypo, MaterialCommunityIcons } from '@expo/vector-icons';
 
 import Navbar from '../components/navbar'
 
 import css from './style';
 import global from '../global/style'
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import DeprecatedViewPropTypes from 'react-native/Libraries/DeprecatedPropTypes/DeprecatedViewPropTypes';
 
 export default function Reservas({ navigation }) {
     const url = "http://10.87.202.133:8080/locacao/reservas";
@@ -38,6 +39,13 @@ export default function Reservas({ navigation }) {
         return `${dia}/${mes}/${ano}`;
      }
 
+     const valor = (ret, dev, val) => {
+        const dif = Math.abs(ret - dev);
+        const days = Math.ceil(dif / (1000 * 60 * 60 * 24));
+        const cont = days * val;
+        console.log(cont);
+    }
+
     return (
         <View style={global.tela}>
 
@@ -60,7 +68,7 @@ export default function Reservas({ navigation }) {
                                         return (
                                             <View style={css.card} key={index}>
                                                 <View style={css.imagem}>
-                                                    <Image source={{ uri: item.imagem }} style={{ width: '100%', height: '100%', borderTopLeftRadius: 15, borderBottomLeftRadius: 15 }} />
+                                                    <MaterialCommunityIcons name="image-off-outline" size={70} color="black"/>
                                                 </View>
                                                 <View>
                                                     <Text style={css.txt}>Placa:</Text>
@@ -69,11 +77,11 @@ export default function Reservas({ navigation }) {
                                                     <Text style={css.txt}>Valor:</Text>
                                                     <Text style={css.txt}>Filial:</Text>
                                                 </View>
-                                                <View style={css.info}>
+                                                <View>
                                                     <Text style={{color: 'green', marginRight: 10, marginBottom: 5, fontWeight: 'bold'}}>{item.veiculo}</Text>
                                                     <Text style={{color: 'green', marginRight: 10, marginBottom: 5, fontWeight: 'bold'}}>{formatDate(new Date(item.data_retirada))}</Text>
-                                                    <Text style={{color: 'purple', marginRight: 10, marginBottom: 5, fontWeight: 'bold'}}>{formatDate(new Date(item.devolucao))}</Text>
-                                                    <Text style={{fontWeight: 'bold'}}>{item.valor}</Text>
+                                                    <Text style={{color: 'purple', marginRight: 10, marginBottom: 5, fontWeight: 'bold'}}>{formatDate(new Date(item.data_devolucao_esperada))}</Text>
+                                                    <Text style={{fontWeight: 'bold'}}>{valor(new Date(item.data_devolucao_esperada),new Date(item.data_retirada), item.valor)}</Text>
                                                     <Text style={{fontWeight: 'bold'}}>{item.id_loja}</Text>
                                                 </View>
                                             </View>
