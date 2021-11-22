@@ -1,4 +1,5 @@
 package models;
+import java.text.NumberFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -13,10 +14,13 @@ public class Reserva {
 	private int id_reserva;
 	private int id_cliente;
 	private String veiculo;
+	private double valor;
+	private String imagem;
 	private int id_tipo;
 	private int id_loja;
 	
 	SimpleDateFormat d = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+	NumberFormat z = NumberFormat.getCurrencyInstance();
 	
 	private Date data_retirada;
 	private Date data_devolucao_esperada;
@@ -118,6 +122,9 @@ public class Reserva {
 		this.data_devolucao_esperada = data_devolucao_esperada;
 	}
 	
+	public void setData_devolucao_esperada(String data_devolucao_esperada) throws ParseException {
+		this.data_devolucao_esperada = d.parse(data_devolucao_esperada);
+	}
 	
 	
 	public Date getData_devolucao_final() {
@@ -129,11 +136,25 @@ public class Reserva {
 		this.data_devolucao_final = data_devolucao_final;
 	}
 	
-	
-	public void setData_devolucao_esperada(String data_devolucao_esperada) throws ParseException {
-		this.data_devolucao_esperada = d.parse(data_devolucao_esperada);
+	public void setData_devolucao_final(String data_devolucao_final) throws ParseException {
+		this.data_devolucao_final = d.parse(data_devolucao_final);
 	}
 	
+	public void setValor(double valor) {
+		this.valor = valor;
+	}
+	
+	public double getValor() {
+		return this.valor;
+	}
+	
+	public void setImagem(String imagem) {
+		this.imagem = imagem;
+	}
+	
+	public String getImagem() {
+		return this.imagem;
+	}
 	
 	@Override
 	public String toString() {
@@ -146,7 +167,7 @@ public class Reserva {
 		JSONObject json = new JSONObject();
 		
 		
-		if(data_devolucao_esperada != null) {
+		if(data_devolucao_esperada != null && data_devolucao_final != null) {
 			
 			try {
 				
@@ -156,14 +177,37 @@ public class Reserva {
 				json.put("id_loja", id_loja);
 				json.put("id_tipo", id_tipo);
 				json.put("data_retirada", data_retirada);
-				json.put("data_devolucao", data_devolucao_esperada);
-
+				json.put("data_devolucao_esperada", data_devolucao_esperada);
+				json.put("data_devolucao_final", data_devolucao_final);
+				json.put("valor", z.format(valor));
+				json.put("imagem", imagem);
 				
 			}catch(JSONException e) {
 				System.out.println("Erro ao converter JSON: "+e);
 			}
 			
 		}
+		
+		else if(data_devolucao_esperada != null && data_devolucao_final == null) {
+			
+			try {
+				
+				json.put("id_reserva", id_reserva);
+				json.put("id_cliente", id_cliente);
+				json.put("veiculo", veiculo);
+				json.put("id_loja", id_loja);
+				json.put("id_tipo", id_tipo);
+				json.put("data_retirada", data_retirada);
+				json.put("data_devolucao_esperada", data_devolucao_esperada);
+				json.put("valor", z.format(valor));
+				json.put("imagem", imagem);
+				
+			}catch(JSONException e) {
+				System.out.println("Erro ao converter JSON: "+e);
+			}
+			
+		}
+		
 		
 		else {
 			
@@ -175,6 +219,8 @@ public class Reserva {
 				json.put("id_loja", id_loja);
 				json.put("id_tipo", id_tipo);
 				json.put("data_retirada", data_retirada);
+				json.put("valor", z.format(valor));
+				json.put("imagem", imagem);
 				
 			}catch(JSONException e) {
 				System.out.println("Erro ao converter JSON: "+e);

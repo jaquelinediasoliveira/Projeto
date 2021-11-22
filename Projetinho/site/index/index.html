@@ -23,8 +23,7 @@
             <img src="../img/logo.png" alt="" id="logo">
             <div>
                 <ul class="menu-login">
-                    <li><i class="fa fa-list" aria-hidden="true"></i>Minhas Reservas</li>
-                    <li id="tologin"><i class="fa fa-user" aria-hidden="true"></i>Entrar</li>
+                    <!-- <li id="tologin"><i class="fa fa-user" aria-hidden="true"></i>Entrar</li> -->
                 </ul>
             </div>
         </div>
@@ -32,14 +31,14 @@
 
     <div class="veiculos">
         <ul class="menu-veiculos">
-            <li><a href="./index.html"><i class="fa fa-car" aria-hidden="true"></i>Carros</a></li>
-            <li><a href="#"><i class="fa fa-motorcycle" aria-hidden="true"></i>Motos</a></li>
-            <li><a href="#"><i class="fa fa-truck" aria-hidden="true"></i>Caminhões</a></li>
-            <li><a href="#"><i class="fa fa-fighter-jet" aria-hidden="true"></i>Jatos</a></li>
-            <li><a href="#"><img src="../img/helicoptero.png" alt="">Helicópteros</a></li>
-            <li><a href="#"><i class="fa fa-ship" aria-hidden="true"></i>Lanchas</a></li>
-            <li><a href="#"><img src="../img/jet-ski.png" alt="">Jet Ski</a></li>
-            <li><a href="#"><i class="fa fa-ship" aria-hidden="true"></i>Iate</a></li>
+            <li id="tocarros"><a href="#"><i class="fa fa-car" aria-hidden="true"></i>Carros</a></li>
+            <li id="tomotos"><a href="#"><i class="fa fa-motorcycle" aria-hidden="true"></i>Motos</a></li>
+            <li id="tocaminhoes"><a href="#"><i class="fa fa-truck" aria-hidden="true"></i>Caminhões</a></li>
+            <li id="tojatos"><a href="#"><i class="fa fa-fighter-jet" aria-hidden="true"></i>Jatos</a></li>
+            <li id="tohelicop"><a href="#"><img src="../img/helicoptero.png" alt="">Helicópteros</a></li>
+            <li id="tolanchas"><a href="#"><i class="fa fa-ship" aria-hidden="true"></i>Lanchas</a></li>
+            <li id="tojetski"><a href="#"><img src="../img/jet-ski.png" alt="">Jet Ski</a></li>
+            <li id="toiate"><a href="#"><i class="fa fa-ship" aria-hidden="true"></i>Iate</a></li>
         </ul>
     </div>
 
@@ -78,7 +77,7 @@
                 </div>
             </div>
 
-            <button class="button" type="submit">Alugar</button>
+            <button class="button" id="alugar" type="submit">Alugar</button>
 
         </form>
         <img id="img1" src="../img/sg_jeep_compass-1.png" alt="">
@@ -86,73 +85,19 @@
 
     <h1><i class="fa fa-bandcamp" aria-hidden="true"></i>Alugue agora um carro agora!</h1>
 
-    <section class="carros">
+    <section class="listadeveiculos">
         <div class="card">
-            <h2>Renault Kwid 1.0</h2>
-            <img src="../img/am_renault_kwid.png" alt="">
+            <h2 class="modelo">Renault Kwid 1.0</h2>
+            <img src="../img/noimage.png" alt="">
             <div>
                 <p>A partir de</p>
-                <p class="diaria">R$ 92,69/Diária</p>
+                <div class="diaria">
+                    <span>R$</span>
+                    <span id="preco">92,69</span>
+                    <span>/Diária</span>
+                </div>
             </div>
         </div>
-        <div class="card">
-            <h2>Volkswagen Golf GTE</h2>
-            <img src="../img/ee_golf_gte-2.png" alt="">
-            <div>
-                <p>A partir de</p>
-                <p class="diaria">R$ 92,69/Diária</p>
-            </div>
-        </div>
-        <div class="card">
-            <h2>Jeep Compass</h2>
-            <img src="../img/sg_jeep_compass-1.png" alt="">
-            <div>
-                <p>A partir de</p>
-                <p class="diaria">R$ 92,69/Diária</p>
-            </div>
-        </div>
-        <div class="card">
-            <h2>Volkswagen T-Cross</h2>
-            <img src="../img/sv_volkswagen_t-cross-1.png" alt="">
-            <div>
-                <p>A partir de</p>
-                <p class="diaria">R$ 92,69/Diária</p>
-            </div>
-        </div>
-        <!-- Temporário -->
-        <div class="card">
-            <h2>Renault Kwid 1.0</h2>
-            <img src="../img/am_renault_kwid.png" alt="">
-            <div>
-                <p>A partir de</p>
-                <p class="diaria">R$ 92,69/Diária</p>
-            </div>
-        </div>
-        <div class="card">
-            <h2>Volkswagen Golf GTE</h2>
-            <img src="../img/ee_golf_gte-2.png" alt="">
-            <div>
-                <p>A partir de</p>
-                <p class="diaria">R$ 92,69/Diária</p>
-            </div>
-        </div>
-        <div class="card">
-            <h2>Jeep Compass</h2>
-            <img src="../img/sg_jeep_compass-1.png" alt="">
-            <div>
-                <p>A partir de</p>
-                <p class="diaria">R$ 92,69/Diária</p>
-            </div>
-        </div>
-        <div class="card">
-            <h2>Volkswagen T-Cross</h2>
-            <img src="../img/sv_volkswagen_t-cross-1.png" alt="">
-            <div>
-                <p>A partir de</p>
-                <p class="diaria">R$ 92,69/Diária</p>
-            </div>
-        </div>
-        <!-- Temporário -->
 
     </section>
 
@@ -172,5 +117,6 @@
 
 </body>
 <script src="../global/script.js"></script>
+<script src="./script.js"></script>
 
 </html>

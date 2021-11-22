@@ -12,6 +12,7 @@ public class Veiculo {
 	private String cor;
 	private float preco;
 	private String status_loc;
+	private String imagem;
 	
 	public Veiculo() {
 		
@@ -77,6 +78,14 @@ public class Veiculo {
 	public void setStatus_loc(String status_loc) {
 		this.status_loc = status_loc;
 	}
+	
+	public void setImagem(String imagem) {
+		this.imagem = imagem;
+	}
+	
+	public String getImagem() {
+		return this.imagem;
+	}
 
 
 	@Override
@@ -97,6 +106,7 @@ public class Veiculo {
 			json.put("cor", cor);
 			json.put("preco", preco);
 			json.put("status_loc", status_loc);
+			json.put("imagem", imagem);
 			
 		} catch (JSONException e) {
 			System.out.println("Erro ao converter JSON: " + e);
