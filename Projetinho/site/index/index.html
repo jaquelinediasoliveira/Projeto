@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../global/global.css">
+    <link rel="stylesheet" href="./index.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="shortcut icon" href="../img/favicon.png">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;0,700;0,900;1,300;1,400;1,500;1,700;1,900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Locar - Locadora de Veículos</title>
+</head>
+
+<body>
+    <header>
+        <div class="header">
+            <img src="../img/logo.png" alt="" id="logo">
+            <div>
+                <ul class="menu-login">
+                    <!-- <li id="tologin"><i class="fa fa-user" aria-hidden="true"></i>Entrar</li> -->
+                </ul>
+            </div>
+        </div>
+    </header>
+
+    <div class="veiculos">
+        <ul class="menu-veiculos">
+            <li id="tocarros"><a href="#"><i class="fa fa-car" aria-hidden="true"></i>Carros</a></li>
+            <li id="tomotos"><a href="#"><i class="fa fa-motorcycle" aria-hidden="true"></i>Motos</a></li>
+            <li id="tocaminhoes"><a href="#"><i class="fa fa-truck" aria-hidden="true"></i>Caminhões</a></li>
+            <li id="tojatos"><a href="#"><i class="fa fa-fighter-jet" aria-hidden="true"></i>Jatos</a></li>
+            <li id="tohelicop"><a href="#"><img src="../img/helicoptero.png" alt="">Helicópteros</a></li>
+            <li id="tolanchas"><a href="#"><i class="fa fa-ship" aria-hidden="true"></i>Lanchas</a></li>
+            <li id="tojetski"><a href="#"><img src="../img/jet-ski.png" alt="">Jet Ski</a></li>
+            <li id="toiate"><a href="#"><i class="fa fa-ship" aria-hidden="true"></i>Iate</a></li>
+        </ul>
+    </div>
+
+    <section class="carousel">
+        <form>
+            <div>
+                <p>Local:</p>
+                <div class="input filtro" id="filtro">
+                    <input type="search" id="local" name="local" placeholder="Digite a cidade">
+                </div>
+            </div>
+
+            <div>
+                <p>Data e Hora de Retirada:</p>
+                <div class="datahora">
+                    <div class="input data" id="data">
+                        <input type="date" name="retirada" id="retirada">
+                    </div>
+
+                    <div class="input hora" id=hora>
+                        <input type="time" name="horaretirada" id="horaretirada">
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <p>Data e Hora de Devolução:</p>
+                <div class="datahora">
+                    <div class="input data" id="data">
+                        <input type="date" name="devolucao" id="devolucao">
+                    </div>
+
+                    <div class="input hora" id=hora>
+                        <input type="time" name="horadevolucao" id="horadevolucao">
+                    </div>
+                </div>
+            </div>
+
+            <button class="button" type="submit" onclick="alugar()">Alugar</button>
+
+        </form>
+        <!-- <img id="img1" src="../img/sg_jeep_compass-1.png" alt=""> -->
+    </section>
+
+    <h1><i class="fa fa-bandcamp" aria-hidden="true"></i>Alugue agora <span id="uma">um</span> <span id="spanveiculo">veículo</span> agora!</h1>
+    <div class="confirmar">
+        <!-- <div>
+            <p>Local</p>
+            <p id="locall">local</p>
+        </div>
+        <div>
+            <p>Retirada</p>
+            <p id="retiradaa">retirada</p>
+        </div>        
+        <div>
+            <p>Devolução</p>
+            <p id="devolucaoo">devolucao</p>
+        </div> -->
+    </div>
+
+    <section class="listadeveiculos">
+        <!-- <div class="card">
+            <h2 class="modelo">Renault Kwid 1.0</h2>
+            <img src="../img/noimage.png" alt="">
+            <div>
+                <p>A partir de</p>
+                <div class="diaria">
+                    <span>R$</span>
+                    <span id="preco">92,69</span>
+                    <span>/Diária</span>
+                </div>
+            </div>
+        </div> -->
+
+    </section>
+
+    <section class="app">
+        <div class="relative">
+            <img src="../img/app.png" alt="">
+        </div>
+        <div>
+            <p>Baixe o nosso APP!<br>Aluguar um veículo nunca foi tão fácil.</p>
+        </div>
+    </section>
+
+    <footer>
+        <!-- <img src="../img/logo.png" alt="">
+        <p>Locadora de Veículos</p> -->
+        <div>
+            <h3>Veículos</h3>
+            <ul>
+                <li id="tocarros">Carros</li>
+                <li id="tomotos">Motos</li>
+                <li id="tocaminhoes">Caminhões</li>
+                <li id="tojatos">Jatos</li>
+                <li id="tohelicop">Helicópteros</li>
+                <li id="tolanchas">Lanchas</li>
+                <li id="tojetski">Jet Ski</li>
+                <li id="toiate">Iate</li>
+            </ul>
+            <p class="copyright">&copy; Todos os direitos reservados</p>
+        </div>
+    </footer>
+
+</body>
+<script src="../global/script.js"></script>
+<script src="./script.js"></script>
+
+</html>
