@@ -1,38 +1,80 @@
 var cliente = localStorage.getItem('id_cliente')
 
-let toindex = document.querySelector("#logo")
-let tologin = document.querySelector("#tologin")
-let tousuario = document.querySelector("#tousuario")
-let tocadastrar = document.querySelector("#tocadastrar")
-var ulSair = document.querySelector('.menu-login')
+var toindex = document.querySelector("#logo")
+// var tologin = document.querySelector("#tologin")
+var toperfil = document.querySelector("#toperfil")
+var tousuario = document.querySelector("#tousuario")
+var tocadastrar = document.querySelector("#tocadastrar")
+var toreservas = document.querySelector('#toreservas')
+var menulogin = document.querySelector('.menu-login')
 
-if (cliente !== null) {
-    tologin.innerHTML = localStorage.getItem("id_cliente")
+if (cliente != null) {
+
+    let perfil = document.createElement("li")
+    perfil.innerHTML = localStorage.getItem("email")
+    perfil.id = 'toperfil'
+    perfil.addEventListener("click", () => {
+        window.location.href = "/perfil"
+    })
+    menulogin.appendChild(perfil)
 
     let iconNome = document.createElement("i")
     iconNome.className = "fa fa-user"
-    tologin.id = 'reverse-fix'
-    ulSair.appendChild(iconNome)
-    tologin.appendChild(iconNome)
+    menulogin.appendChild(iconNome)
+    perfil.appendChild(iconNome)
+
+    let reservas = document.createElement("li")
+    reservas.innerHTML = "Minhas Reservas";
+    reservas.id = 'toreservas'
+    reservas.addEventListener("click", () => {
+        window.location.href = "/reservas"
+    })
+    menulogin.appendChild(reservas)
+
+    let iconReservas = document.createElement("i")
+    iconReservas.className = "fa fa-list"
+    menulogin.appendChild(iconReservas)
+    reservas.appendChild(iconReservas)
 
     let sair = document.createElement("li")
     sair.innerHTML = "Sair";
     sair.id = 'reverse-fix'
     sair.addEventListener("click", () => {
-        localStorage.clear()
+        localStorage.clear();
         window.location.href = "/index"
     })
-    ulSair.appendChild(sair)
+    menulogin.appendChild(sair)
 
     let iconSair = document.createElement("i")
     iconSair.className = "fa fa-sign-out"
-    ulSair.appendChild(iconSair)
+    menulogin.appendChild(iconSair)
     sair.appendChild(iconSair)
+
+} else {
+
+    let entrar = document.createElement("li")
+    entrar.innerHTML = "Entrar";
+    entrar.id = 'tologin'
+    entrar.addEventListener("click", () => {
+        window.location.href = "/login"
+    })
+    menulogin.appendChild(entrar)
+
+    let iconentrar = document.createElement("i")
+    iconentrar.className = "fa fa-user"
+    entrar.appendChild(iconentrar)
+
 }
 
 if (toindex !== null) {
     toindex.addEventListener("click", () => {
         window.location.href = "/index"
+    })
+}
+
+if (toperfil !== null) {
+    toperfil.addEventListener("click", () => {
+        window.location.href = "/perfil"
     })
 }
 
@@ -45,5 +87,11 @@ if (tologin !== null) {
 if (tocadastrar !== null) {
     tocadastrar.addEventListener("click", () => {
         window.location.href = "/cadastro"
+    })
+}
+
+if (toreservas !== null) {
+    toreservas.addEventListener("click", () => {
+        window.location.href = "/reservas"
     })
 }
